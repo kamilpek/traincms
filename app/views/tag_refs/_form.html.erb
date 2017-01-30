@@ -1,0 +1,12 @@
+<%= simple_form_for(@tag_ref) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :tag %>
+    <%= f.association :article %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

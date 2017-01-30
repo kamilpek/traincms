@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Menu Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menu_types.each do |menu_type| %>
+      <tr>
+        <td><%= menu_type.title %></td>
+        <td><%= menu_type.content %></td>
+        <td><%= menu_type.order %></td>
+        <td><%= link_to 'Show', menu_type %></td>
+        <td><%= link_to 'Edit', edit_menu_type_path(menu_type) %></td>
+        <td><%= link_to 'Destroy', menu_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Menu Type', new_menu_type_path %>

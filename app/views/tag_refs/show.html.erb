@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @tag_ref.tag %>
+</p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @tag_ref.article %>
+</p>
+
+<%= link_to 'Edit', edit_tag_ref_path(@tag_ref) %> |
+<%= link_to 'Back', tag_refs_path %>

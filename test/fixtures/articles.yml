@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  category: one
+  active: false
+  intro: MyText
+  content: MyText
+  visit: 1
+  highlight: false
+
+two:
+  title: MyText
+  category: two
+  active: false
+  intro: MyText
+  content: MyText
+  visit: 1
+  highlight: false

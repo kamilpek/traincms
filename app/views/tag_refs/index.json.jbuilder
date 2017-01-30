@@ -1,0 +1,1 @@
+json.array! @tag_refs, partial: 'tag_refs/tag_ref', as: :tag_ref
