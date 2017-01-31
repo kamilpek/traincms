@@ -7,7 +7,7 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @article.category %>
+  <%= Category.where(id:@article.category).pluck(:title).last  %>
 </p>
 
 <p>

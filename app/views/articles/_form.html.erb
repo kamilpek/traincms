@@ -11,47 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_area :title %>
+  <div class="input-group">
+    <span class="input-group-label">Tytuł</span>
+    <%= f.text_field :title, type:"text", class:"input-group-field" %>
   </div>
 
-  <div class="field">
-    <%= f.label :category_id %>
-    <%= f.text_field :category_id %>
+  <div class="input-group">
+    <span class="input-group-label">Kategoria</span>
+    <%= f.collection_select :category_id, Category.all, :id, :title, {prompt: "Wybierz"}, {class:"input-group-field"} %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id, :value => current_user.id ,:readonly => true, class:"form-control" %><br>
+  <div class="input-group">
+    <span class="input-group-label">Autor</span>
+    <%= f.text_field :user_id, :value => current_user.id ,:readonly => true, class:"input-group-field" %><br>
   </div>
 
-  <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
+  <fieldset class="fieldset">
+    <legend>Status</legend>
+    <%= f.check_box :active, type:"checkbox" %>
+    <label for="checkbox12">Opublikowany</label>
+    <%= f.check_box :highlight, type:"checkbox" %>
+    <label for="checkbox12">Wyróżniony</label>
+  </fieldset>
+
+  <span class="label">Wstęp do artykułu</span>
+  <%= f.text_area :intro, placeholder:"Wstęp" %>
+
+  <span class="label">Część właściwa artykułu</span>
+  <%= f.text_area :content, placeholder:"Artykuł" %>
+
+  <div class="input-group">
+    <span class="input-group-label">Wyświetlenia</span>
+    <%= f.number_field :visit, :value => 0, class:"input-group-field"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :intro %>
-    <%= f.text_area :intro %>
-  </div>
+  <%= f.submit :Dodaj, class:"button success" %>
+  <%= link_to 'Wróć', articles_path, class:"button alert" %>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :visit %>
-    <%= f.number_field :visit %>
-  </div>
-
-  <div class="field">
-    <%= f.label :highlight %>
-    <%= f.check_box :highlight %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
