@@ -28,7 +28,7 @@
     <% @articles.each do |article| %>
     <div class="row">
       <div class="large-6 columns">
-        <p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
+        <p><%= image_tag article.image.url(:thumb) if article.image? %></p>
       </div>
       <div class="large-6 columns">
         <h5><%= article.title %></h5>

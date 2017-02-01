@@ -1,4 +1,4 @@
-<%= form_for(article) do |f| %>
+<%= form_for @article, html: { multipart: true} do |f| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -44,6 +44,17 @@
     <span class="input-group-label">Wyświetlenia</span>
     <%= f.number_field :visit, :value => 0, class:"input-group-field"  %>
   </div>
+
+  <p>
+    <%= f.file_field :image %>
+  </p>
+
+  <p>
+    <label>
+      <%= f.check_box :remove_image %>
+      Remove avatar
+    </label>
+  </p>
 
   <%= f.submit :Dodaj, class:"button success" %>
   <%= link_to 'Wróć', articles_path, class:"button alert" %>

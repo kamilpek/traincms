@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Obrazek:</strong>
+  <%= image_tag @article.image.url(:thumb) if @article.image? %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= Category.where(id:@article.category).pluck(:title).last  %>
 </p>

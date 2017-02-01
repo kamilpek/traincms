@@ -59,3 +59,5 @@ gem 'jquery-turbolinks', '~> 2.1' # wyglad strony
 gem 'simple_form', '~> 3.4' # formularze
 gem 'will_paginate', '~> 3.1', '>= 3.1.5' # paginacja
 gem 'will_paginate-foundation', '~> 6.2' # paginacja - wyglad
+gem 'carrierwave', '~> 1.0' # upload plików
+gem 'rmagick', '~> 2.16' # upload plików - obrazki
