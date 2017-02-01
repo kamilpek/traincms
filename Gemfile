@@ -57,3 +57,5 @@ gem 'devise' # uzytkownicy
 gem 'foundation-rails', '~> 6.3' # wyglad strony
 gem 'jquery-turbolinks', '~> 2.1' # wyglad strony
 gem 'simple_form', '~> 3.4' # formularze
+gem 'will_paginate', '~> 3.1', '>= 3.1.5' # paginacja
+gem 'will_paginate-foundation', '~> 6.2' # paginacja - wyglad

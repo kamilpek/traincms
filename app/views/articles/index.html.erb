@@ -35,7 +35,7 @@
     <% end %>
   </tbody>
 </table>
-
+<p><%= will_paginate @articles, renderer: FoundationPagination::Rails %></p>
 <br>
 
 <%= link_to 'Nowy Artykuł', new_article_path, class:'success button' %>
