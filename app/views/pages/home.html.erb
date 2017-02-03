@@ -4,11 +4,14 @@
 
 <div class="row">
   <div class="medium-8 columns">
-    <p><img src="http://placehold.it/900x450&text=Promoted Article" alt="main article image"></p>
+    <% @articles.where(:highlight => true).take(1).each do |article| %>
+      <p> <%= link_to image_tag(article.image.url, size: "900x450"), article %> </p>
+    <% end %>
   </div>
   <div class="medium-4 columns">
-    <p><img src="http://placehold.it/400x200&text=Other cool article" alt="article promo image" alt="advertisement for deep fried Twinkies"></p>
-    <p><img src="http://placehold.it/400x200&text=Other cool article" alt="article promo image"></p>
+    <% @articles.where(:highlight => true).take(2).each do |article| %>
+      <p> <%= link_to image_tag(article.image.url, size: "400x200"), article %> </p>
+    <% end %>
   </div>
 </div>
 
@@ -25,7 +28,7 @@
 
   <article>
 
-    <% @articles.each do |article| %>
+    <% @articles.order("created_at desc").each do |article| %>
     <div class="row">
       <div class="large-6 columns">
         <p><%= image_tag article.image.url(:thumb) if article.image? %></p>
@@ -56,50 +59,20 @@
     <aside>
 
       <div class="row column">
-        <p class="lead">FROM OUR FRIENDS</p>
-        <p><img src="http://placehold.it/400x300&text=Buy Me!" alt="advertisement of ShamWow"></p>
-      </div>
+        <p class="lead">NAJPOPULARNIEJSZE ARTYKUŁY</p>
 
-      <br>
-
-      <div class="row column">
-        <p class="lead">TRENDING POSTS</p>
+        <% @articles.order("visit desc").take(5).each do |article| %>
 
         <div class="media-object">
           <div class="media-object-section">
-            <img class="thumbnail" src= "http://placehold.it/100">
+            <%= image_tag(article.image.url, size: "100x100") %>
           </div>
           <div class="media-object-section">
-            <h5>All I need is a space suit and I'm ready to go.</h5>
+            <h5> <%= link_to article.title, article %> </h5>
           </div>
         </div>
 
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src= "http://placehold.it/100">
-          </div>
-          <div class="media-object-section">
-            <h5>Are the stars out tonight? I don't know if it's cloudy or bright.</h5>
-          </div>
-        </div>
-
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src= "http://placehold.it/100">
-          </div>
-          <div class="media-object-section">
-            <h5>And the world keeps spinning.</h5>
-          </div>
-        </div>
-
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src= "http://placehold.it/100">
-          </div>
-          <div class="media-object-section">
-            <h5>Cold hearted orb that rules the night.</h5>
-          </div>
-        </div>
+        <% end %>
 
       </div>
 
@@ -129,9 +102,8 @@
 
     <div class="medium-6 columns">
       <ul class="menu">
-        <li><a href="#">O Projekcie</a></li>
-        <li><a href="#">O Autorze</a></li>
-        <li><a href="#">Pomoc</a></li>
+        <li><%= link_to 'O Projekcie', pages_about_path %></li>
+        <li><%= link_to 'Pomoc', pages_help_path %></li>
       </ul>
     </div>
 

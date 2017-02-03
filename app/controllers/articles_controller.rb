@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    visited
   end
 
   # GET /articles/new
@@ -62,6 +63,12 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def visited
+    @counter = Article.where(id:@article.id).pluck(:visit).last
+    @counter = @counter + 1
+    Article.update(@article.id, :visit => @counter)
   end
 
   private
