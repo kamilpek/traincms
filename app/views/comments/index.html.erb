@@ -17,7 +17,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.article %></td>
+        <td><%= Article.where(id:comment.article).pluck(:id).last %></td>
         <td><%= comment.author %></td>
         <td><%= comment.content %></td>
         <td><%= comment.email %></td>

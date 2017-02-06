@@ -42,3 +42,34 @@
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
+
+<h3> komentarze </h3>
+
+<% @comments.order("created_at desc").each do |comment| %>
+<% if @article.id == Article.where(id:comment.article).pluck(:id).last %>
+<table>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.author %></td>
+        <td><%= comment.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %> <% end %>
+
+  <%= form_for Comment.new do |f| %>
+    <%= f.hidden_field :article_id, :value => @article.id  %>
+    <%= f.hidden_field :ip, :value => request.remote_ip %>
+    <p>Autor: <%= f.text_field :author %> </p>
+    <p>Treść komentarza: <%= f.text_area :content %> </p>
+    <%= f.submit "Dodaj Komentarz" %>
+  <% end %>
