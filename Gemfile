@@ -62,3 +62,4 @@ gem 'will_paginate-foundation', '~> 6.2' # paginacja - wyglad
 gem 'carrierwave', '~> 1.0' # upload plików
 gem 'rmagick', '~> 2.16' # upload plików - obrazki
 gem 'recaptcha', '~> 4.1', :require => 'recaptcha/rails' # captcha
+gem 'ckeditor', '~> 4.2', '>= 4.2.2' # edytor tekstu
