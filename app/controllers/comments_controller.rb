@@ -14,6 +14,17 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    if !verify_recaptcha
+     flash.delete :recaptcha_error
+     build_resource(comment_params)
+     resource.valid?
+     resource.errors.add(:base, "Proszę zaznaczyć Captcha.")
+     clean_up_passwords(resource)
+     respond_with_navigational(resource) { render :new }
+    else
+      flash.delete :recaptcha_error
+      super
+    end
     @comment = Comment.new
   end
 

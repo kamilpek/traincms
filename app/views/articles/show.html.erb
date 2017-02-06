@@ -69,7 +69,15 @@
   <%= form_for Comment.new do |f| %>
     <%= f.hidden_field :article_id, :value => @article.id  %>
     <%= f.hidden_field :ip, :value => request.remote_ip %>
-    <p>Autor: <%= f.text_field :author %> </p>
-    <p>Treść komentarza: <%= f.text_area :content %> </p>
+    <div class="input-group">
+      <span class="input-group-label">Autor</span>
+      <%= f.text_field :author, type:"text", class:"input-group-field" %>
+    </div>
+    <div class="input-group">
+      <span class="input-group-label">Treść</span>
+      <%= f.text_field :content, type:"text", class:"input-group-field" %>
+    </div>
+    <%= flash[:recaptcha_error] %>
+    <%= recaptcha_tags %>
     <%= f.submit "Dodaj Komentarz" %>
   <% end %>
