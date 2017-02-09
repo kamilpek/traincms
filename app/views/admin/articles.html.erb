@@ -1,0 +1,55 @@
+<% content_for :title, " - Lista artykułów." %>
+<% content_for :menu, "admin" %>
+</br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Zaplecze - Zarządzanie artykułami</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table>
+        <thead>
+          <tr>
+            <th>Tytuł</th>
+            <th>Kategoria</th>
+            <th>Aktwny</th>
+            <th>Wyróżniony</th>
+            <th>Autor</th>
+            <th>Wizyty</th>
+            <th colspan="2">Akcje</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= link_to article.title, article %></td>
+              <td><%= Category.where(id:article.category).pluck(:title).last %></td>
+              <% if article.active == true %>
+                <td>Tak</td>
+              <% else %>
+                <td>Nie</td>
+              <% end %>
+              <% if article.highlight == true %>
+                <td>Tak</td>
+              <% else %>
+                <td>Nie</td>
+              <% end %>
+              <td><%= article.visit %></td>
+              <td><%= User.where(id:article.user_id).pluck(:email).last %></td>
+              <td><%= link_to 'Edytuj', edit_article_path(article), class:"button tiny" %></td>
+              <td><%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><%= will_paginate @articles, renderer: FoundationPagination::Rails %></p>
+      <br>
+    </div>
+  </div>
+</div>

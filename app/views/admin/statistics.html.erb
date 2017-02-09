@@ -1,0 +1,68 @@
+<% content_for :title, " - Statystyki." %>
+<% content_for :menu, "admin" %>
+
+<h1>Statystyki</h1>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Ilość artykułów z podziałem na kategorie</h5>
+      <%= pie_chart Article.group(:category_id).count %>
+      <p align="center">Legenda:
+      <% Category.all.each do |category| %>
+        <strong><%= category.id %>. </strong><%= category.title %>,
+      <% end %> </p>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Ilość artkyułów z podziałem na userów</h5>
+      <%= pie_chart Article.group(:user_id).count %>
+      <p align="center">Legenda:
+      <% User.all.each do |user| %>
+        <strong><%= user.id %>. </strong><%= user.email %>,
+      <% end %> </p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout">
+      <h5>Ilosć artykułów według daty</h5>
+      <%= line_chart Article.group_by_day(:created_at).count %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Najczęściej komentowane artykuły</h5>
+      <%= pie_chart Comment.group(:article_id).count %>
+      <p align="center">Legenda:
+      <% Article.order("id").all.each do |article| %>
+        <strong><%= article.id %>. </strong><%= article.title %>,
+      <% end %> </p>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Najczęściej czytanie artykuły</h5>
+      <%= pie_chart Article.group(:visit).count %>
+      <p align="center">Legenda:
+      <% Article.order("id").all.each do |article| %>
+        <strong><%= article.id %>. </strong><%= article.title %>,
+      <% end %> </p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout">
+      <h5>Ilosć uzytkwoników według daty</h5>
+      <%= line_chart User.group_by_day(:created_at).count %>
+    </div>
+  </div>
+</div>

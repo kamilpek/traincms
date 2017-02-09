@@ -50,6 +50,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.2)
     ckeditor (4.2.2)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -74,12 +75,17 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.17)
+    foundation-icons-sass-rails (3.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     foundation-rails (6.3.0.0)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -203,10 +209,13 @@ PLATFORMS
 DEPENDENCIES
   byebug
   carrierwave (~> 1.0)
+  chartkick (~> 2.2, >= 2.2.2)
   ckeditor (~> 4.2, >= 4.2.2)
   coffee-rails (~> 4.2)
   devise
+  foundation-icons-sass-rails (~> 3.0)
   foundation-rails (~> 6.3)
+  groupdate (~> 3.2)
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks (~> 2.1)

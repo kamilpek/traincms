@@ -1,0 +1,45 @@
+<% content_for :title, " - Kategorie." %>
+<% content_for :menu, "admin" %>
+</br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Zaplecze - Zarządzanie kategoriami</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table>
+        <thead>
+          <tr>
+            <th>Tytuł</th>
+            <th>Opis</th>
+            <th>Status</th>
+            <th colspan="2">Akcje</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= link_to category.title, category %></td>
+              <td><%= category.desc %></td>
+              <% if category.active == true %>
+                <td>Tak</td>
+              <% else %>
+                <td>Nie</td>
+              <% end %>
+              <td><%= link_to 'Edycja', edit_category_path(category), class:"button tiny" %></td>
+              <td><%= link_to 'Usuń', category, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><%= will_paginate @categories, renderer: FoundationPagination::Rails %></p>
+      <br>
+    </div>
+  </div>
+</div>

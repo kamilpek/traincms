@@ -7,9 +7,6 @@ class PagesController < ApplicationController
   def help
   end
 
-  def dashboard
-  end
-
   def about
   end
 end

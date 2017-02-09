@@ -1,0 +1,42 @@
+<% content_for :title, " - Komentarze." %>
+<% content_for :menu, "admin" %>
+</br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Zaplecze - Zarządzanie komentarzami</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table>
+        <thead>
+          <tr>
+            <th>Treść</th>
+            <th>Artykuł</th>
+            <th>Autor</th>
+            <th>Email</th>
+            <th>Adres IP</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= link_to comment.content, comment %></td>
+              <td><%= Article.where(id:comment.article).pluck(:title).last %></td>
+              <td><%= comment.author %></td>
+              <td><%= comment.email %></td>
+              <td><%= comment.ip %></td>
+              <td><%= link_to 'Usuń', comment, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

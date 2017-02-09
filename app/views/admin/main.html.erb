@@ -1,0 +1,128 @@
+<% content_for :title, " - Panel Administracyjny." %>
+<% content_for :menu, "admin" %>
+</br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Zaplecze - panel główny</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Dodaj nowy Artykuł</h5>
+      <font size="24"><i class="fi-page-add"></i></font>
+    </div>
+  </div>
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Zarządzaj Kategoriami</h5>
+      <font size="24"><i class="fi-folder"></i></font>
+    </div>
+  </div>
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Zarządzaj komentarzami</h5>
+      <font size="24"><i class="fi-comments"></i></font>
+    </div>
+  </div>
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Zarządzaj tagami</h5>
+      <font size="24"><i class="fi-price-tag"></i></font>
+    </div>
+  </div>
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Zarządzaj Użytkownikami</h5>
+      <font size="24"><i class="fi-torsos"></i></font>
+    </div>
+  </div>
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Kalendarz wydarzeń</h5>
+      <font size="24"><i class="fi-calendar"></i></font>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Statystyki</h5>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Najpopularniejsze artkuły</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Tytuł</th>
+            <th>Kategoria</th>
+            <th>Wyświetlenia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.order("visit desc").take(5).each do |article| %>
+            <tr>
+              <td><%= link_to article.title, article %></td>
+              <td><%= Category.where(id:article.category).pluck(:title).last %></td>
+              <td><%= article.visit %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Najnowsze komentarze</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Artykuł</th>
+            <th>Komentarz</th>
+            <th>Data wpsiu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.order("created_at desc").take(5).each do |comment| %>
+            <tr>
+              <td><%= Article.where(id:comment.article_id).pluck(:title).last %></td>
+              <td><%= truncate(comment.content, :length => 15) %></td>
+              <td><%= comment.created_at.strftime("%d.%m.%Y") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout">
+      <h5>Najnowsze artykuły</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Tytuł</th>
+            <th>Kategoria</th>
+            <th>Data publikacji</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.order("created_at desc").take(5).each do |article| %>
+            <tr>
+              <td><%= link_to article.title, article %></td>
+              <td><%= Category.where(id:article.category).pluck(:title).last %></td>
+              <td><%= article.created_at.strftime("%d.%m.%Y") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

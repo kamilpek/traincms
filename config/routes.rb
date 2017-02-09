@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :comments
   resources :components
@@ -8,13 +9,18 @@ Rails.application.routes.draw do
   resources :tag_refs
   resources :tags
   devise_for :users
+
   get 'pages/home'
-
   get 'pages/help'
-
-  get 'pages/dashboard'
-
   get 'pages/about'
+
+  get 'admin/main'
+  get 'admin/articles'
+  get 'admin/categories'
+  get 'admin/tags'
+  get 'admin/menus'
+  get 'admin/comments'
+  get 'admin/statistics'
 
   resources :articles
   resources :categories

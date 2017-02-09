@@ -1,0 +1,47 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><%= link_to 'TrainCMS - Administrator', admin_main_path %></li>
+      <li><%= link_to 'Strona Główna', pages_home_path %></li>
+      <li><a href="#">Artykuły</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'Lista', admin_articles_path %></li>
+        </ul>
+      </li>
+      <li><a href="#">Kategorie</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'Lista', admin_categories_path %></li>
+        </ul>
+      </li>
+      <li><a href="#">Komentarze</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'Lista', admin_comments_path %></li>
+        </ul>
+      </li>
+      <li><a href="#">Tagi</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'Lista', admin_tags_path %></li>
+        </ul>
+      </li>
+      <li><a href="#">Menu</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'Lista', admin_menus_path %></li>
+        </ul>
+      </li>
+      <li><a href="#">Statystyki</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'Lista', admin_statistics_path %></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <% if user_signed_in? %>
+      <li class="menu-text"><%= link_to 'Wyloguj', destroy_user_session_path %></li>
+      <% else %>
+      <li class="menu-text"><%= link_to 'Zaloguj', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

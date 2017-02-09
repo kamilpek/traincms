@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # dodane gemy
 gem 'devise' # uzytkownicy
 gem 'foundation-rails', '~> 6.3' # wyglad strony
+gem 'foundation-icons-sass-rails', '~> 3.0' # wyglad strony - ikonki
 gem 'jquery-turbolinks', '~> 2.1' # wyglad strony
 gem 'simple_form', '~> 3.4' # formularze
 gem 'will_paginate', '~> 3.1', '>= 3.1.5' # paginacja
@@ -63,3 +64,5 @@ gem 'carrierwave', '~> 1.0' # upload plików
 gem 'rmagick', '~> 2.16' # upload plików - obrazki
 gem 'recaptcha', '~> 4.1', :require => 'recaptcha/rails' # captcha
 gem 'ckeditor', '~> 4.2', '>= 4.2.2' # edytor tekstu
+gem 'chartkick', '~> 2.2', '>= 2.2.2' # wykresy
+gem 'groupdate', '~> 3.2' # dodatek do wykresów
