@@ -1,7 +1,5 @@
 <% content_for :title, " - Strona Główna." %>
 
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="medium-8 columns">
     <% @articles.where(:highlight => true).take(1).each do |article| %>

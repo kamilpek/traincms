@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    if @user.destroy
+        redirect_to admin_users_path, notice: "Użytkownik usunięty."
+    end
+  end
+
   def grantadmin
     @user = User.find(params[:id])
     user = User.find(@user.id)
@@ -21,7 +30,7 @@ class UsersController < ApplicationController
     else
       user.update_attribute(:admin, true)
     end
-    redirect_to users_path, notice: "Zakutalizowano uprawnienia administratora."
+    redirect_to admin_users_path, notice: "Zakutalizowano uprawnienia administratora."
   end
 
   def user_params

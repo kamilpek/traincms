@@ -19,15 +19,15 @@
         <div class="form-inputs">
           <div class="input-group">
             <span class="input-group-label">Email</span>
-            <%= f.text_field :email, type:"text", required: false, autofocus: true, class:"input-group-field" %>
+            <%= f.text_field :email, type:"text", autofocus: true, class:"input-group-field" %>
           </div>
           <div class="input-group">
             <span class="input-group-label">Imię</span>
-            <%= f.text_field :first_name, type:"text", required: false, class:"input-group-field" %>
+            <%= f.text_field :first_name, type:"text", class:"input-group-field" %>
           </div>
           <div class="input-group">
             <span class="input-group-label">Nazwisko</span>
-            <%= f.text_field :last_name, type:"text", required: false, class:"input-group-field" %>
+            <%= f.text_field :last_name, type:"text", class:"input-group-field" %>
           </div>
 
           <span class="label"><% if @minimum_password_length %> Minimum <%= @minimum_password_length %> znaków. <% end %> </span>

@@ -21,7 +21,7 @@
           </div>
           <div class="input-group">
             <span class="input-group-label">Hasło</span>
-            <%= f.text_field :password, type:"text", required: false, class:"input-group-field" %>
+            <%= f.text_field :password, type:"password", required: false, class:"input-group-field" %>
           </div>
           <fieldset class="fieldset">
             <%= f.check_box :remember_me, type:"checkbox", as: :boolean if devise_mapping.rememberable? %>

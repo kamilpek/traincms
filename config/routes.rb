@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :menu_types
   resources :tag_refs
   resources :tags
-  devise_for :users, controllers: { sessions: 'devise/sessions' }
+  devise_for :users, controllers: { sessions: 'devise/sessions', registrations: 'registrations' }
 
   resources :users
 
@@ -24,6 +24,15 @@ Rails.application.routes.draw do
   get 'admin/comments'
   get 'admin/statistics'
   get 'admin/users'
+
+  scope "admin" do
+    resources :users do
+      member do
+        delete 'destroy'
+        post 'grantadmin'
+      end
+    end
+  end
 
   resources :articles
   resources :categories
