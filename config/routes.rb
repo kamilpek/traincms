@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :tags
   devise_for :users
 
+  resources :users, only: [:index]
+
   get 'pages/home'
   get 'pages/help'
   get 'pages/about'

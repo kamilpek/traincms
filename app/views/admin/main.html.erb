@@ -1,5 +1,6 @@
 <% content_for :title, " - Panel Administracyjny." %>
 <% content_for :menu, "admin" %>
+<% if current_user.try(:admin?)%>
 </br>
 <div class="row">
   <div class="large-12 columns">
@@ -126,3 +127,9 @@
       </table>
     </div>
   </div>
+<% else %>
+  <br>
+  <div class="callout">
+    Nie masz uprawnień do tego modułu.
+  </div>
+<% end %>

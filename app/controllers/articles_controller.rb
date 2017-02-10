@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
-  before_action :correct_user, only: [:edit, :update, :destroy, :show]
+  before_filter :authenticate_user!, except: [:show]
 
   # GET /articles
   # GET /articles.json
@@ -81,10 +80,5 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :category_id, :active, :intro, :content, :visit, :highlight, :user_id, :image)
-    end
-
-    def correct_user
-      @article = current_user.article.find_by(id:params[:id])
-      redirect_to articles_path, notice:"Nie jesteś uprawniony do edcji tego elementu" if @article.nil?
     end
 end
