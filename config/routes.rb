@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'admin/menus'
   get 'admin/comments'
   get 'admin/statistics'
+  get 'admin/users'
 
   resources :articles
   resources :categories

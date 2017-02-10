@@ -15,9 +15,13 @@ class AdminController < ApplicationController
   end
 
   def tags
+    @tags = Tag.all
+    @tags = Tag.paginate(:page => params[:page], :per_page => 10)
   end
 
   def menus
+    @menus = Menu.all
+    @menus = Menu.paginate(:page => params[:page], :per_page => 10)
   end
 
   def comments
@@ -26,5 +30,10 @@ class AdminController < ApplicationController
   end
 
   def statistics
+  end
+
+  def users
+    @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 10)
   end
 end
