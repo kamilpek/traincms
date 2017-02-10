@@ -1,0 +1,41 @@
+</br>
+<div class="row">
+  <div class="large-3 columns"><br></div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <h1>Logowanie</h1>
+    </div>
+  </div>
+  <div class="large-3 columns"><br></div>
+</div>
+
+<div class="row">
+  <div class="large-3 columns"><br></div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <div class="input-group">
+            <span class="input-group-label">Email</span>
+            <%= f.text_field :email, type:"text", required: false, autofocus: true, class:"input-group-field" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-label">Hasło</span>
+            <%= f.text_field :password, type:"text", required: false, class:"input-group-field" %>
+          </div>
+          <fieldset class="fieldset">
+            <%= f.check_box :remember_me, type:"checkbox", as: :boolean if devise_mapping.rememberable? %>
+            <label for="checkbox12">Zapamiętaj Mnie</label>
+          </fieldset>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Zaloguj", class:"success button" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+  <div class="large-3 columns"><br></div>
+</div>

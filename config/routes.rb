@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :menu_types
   resources :tag_refs
   resources :tags
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'devise/sessions' }
 
-  resources :users, only: [:index]
+  resources :users
 
   get 'pages/home'
   get 'pages/help'
