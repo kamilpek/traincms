@@ -1,13 +1,18 @@
-<div class="top-bar">
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">TrainCMS - Menu</div>
+</div>
+
+<div class="top-bar" id="main-menu">
   <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
+    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
       <li class="menu-text"><%= link_to 'TrainCMS', pages_home_path %></li>
       <li><%= link_to 'Artykuły', articles_path %></li>
       <li><%= link_to 'Kategorie', categories_path %></li>
       <li><%= link_to 'Komentarze', comments_path %></li>
-      <li>
+      <li class="has-submenu">
         <a href="#">Konfiguracja</a>
-        <ul class="menu vertical">
+        <ul class="submenu menu vertical">
           <li><%= link_to 'Tagi', tags_path %></li>
           <li><%= link_to 'Tagi - lista', tag_refs_path %></li>
           <li><%= link_to 'Menu', menu_types_path %></li>
@@ -16,9 +21,9 @@
           <li><%= link_to 'Pozycje', positions_path %></li>
         </ul>
       </li>
-      <li>
+      <li class="has-submenu">
         <a href="#">Moje Konto</a>
-        <ul class="menu vertical">
+        <ul class="submenu menu vertical">
           <li><%= link_to 'Zaloguj', new_user_session_path %></li>
         </ul>
       </li>
