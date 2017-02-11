@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_filter :authenticate_user!
+
   def main
     @articles = Article.all
     @comments = Comment.all

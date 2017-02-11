@@ -1,81 +1,108 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Obrazek:</strong>
-  <%= image_tag @article.image.url(:thumb) if @article.image? %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= Category.where(id:@article.category).pluck(:title).last  %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @article.active %>
-</p>
-
-<p>
-  <strong>Intro:</strong>
-  <%= @article.intro %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-
-<p>
-  <strong>Visit:</strong>
-  <%= @article.visit %>
-</p>
-
-<p>
-  <strong>Highlight:</strong>
-  <%= @article.highlight %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
-
-<h3> komentarze </h3>
-
-<% @comments.order("created_at desc").each do |comment| %>
-<% if @article.id == Article.where(id:comment.article).pluck(:id).last %>
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Content</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.author %></td>
-        <td><%= comment.content %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %> <% end %>
-
-  <%= form_for Comment.new do |f| %>
-    <%= f.hidden_field :article_id, :value => @article.id  %>
-    <%= f.hidden_field :ip, :value => request.remote_ip %>
-    <div class="input-group">
-      <span class="input-group-label">Autor</span>
-      <%= f.text_field :author, type:"text", class:"input-group-field" %>
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1><%= @article.title %></h1>
     </div>
-    <div class="input-group">
-      <span class="input-group-label">Treść</span>
-      <%= f.text_field :content, type:"text", class:"input-group-field" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-folder"> Kategoria: <%= Category.where(id:@article.category).pluck(:title).last%></i></h5>
     </div>
-    <%= flash[:recaptcha_error] %>
-    <%= recaptcha_tags %>
-    <%= f.submit "Dodaj Komentarz" %>
-  <% end %>
+  </div>
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-torsos"> Wyświetlenia: <%= @article.visit %></i></h5>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-torso"> Autor: <%= User.where(id:@article.user_id).pluck(:email).last %></i></h5>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= image_tag @article.image.url if @article.image? %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= @article.intro.html_safe %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= @article.content.html_safe %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Edycja', edit_article_path(@article), class:"warning button" %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Powrót', articles_path, class:"button" %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h3> komentarze </h3>
+
+      <% @comments.order("created_at desc").each do |comment| %>
+      <% if @article.id == Article.where(id:comment.article).pluck(:id).last %>
+      <table>
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Content</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.author %></td>
+              <td><%= comment.content %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %> <% end %>
+
+        <%= form_for Comment.new do |f| %>
+          <%= f.hidden_field :article_id, :value => @article.id  %>
+          <%= f.hidden_field :ip, :value => request.remote_ip %>
+          <div class="input-group">
+            <span class="input-group-label">Autor</span>
+            <%= f.text_field :author, type:"text", class:"input-group-field" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-label">Treść</span>
+            <%= f.text_field :content, type:"text", class:"input-group-field" %>
+          </div>
+          <%= flash[:recaptcha_error] %>
+          <%= recaptcha_tags %> <br>
+          <%= f.submit "Dodaj Komentarz", class:"succes button" %>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -11,52 +11,101 @@
     </div>
   <% end %>
 
-  <div class="input-group">
-    <span class="input-group-label">Tytuł</span>
-    <%= f.text_field :title, type:"text", class:"input-group-field" %>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Tytuł</span>
+          <%= f.text_field :title, type:"text", class:"input-group-field" %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="input-group">
-    <span class="input-group-label">Kategoria</span>
-    <%= f.collection_select :category_id, Category.all, :id, :title, {prompt: "Wybierz"}, {class:"input-group-field"} %>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Kategoria</span>
+          <%= f.collection_select :category_id, Category.all, :id, :title, {prompt: "Wybierz"}, {class:"input-group-field"} %>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Autor</span>
+          <%= f.text_field :post, :value => current_user.email, :readonly => true, class:"input-group-field" %><br>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="input-group">
-    <span class="input-group-label">Autor</span>
-    <%= f.text_field :user_id, :value => current_user.id ,:readonly => true, class:"input-group-field" %><br>
+  <div class="row">
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :active, type:"checkbox" %>
+          <label for="checkbox12">Opublikowany</label>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :highlight, type:"checkbox" %>
+          <label for="checkbox12">Wyróżniony</label>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= f.check_box :remove_image, type:"checkbox" %>
+        <label for="checkbox12">Usuń obrazek</label>
+      </div>
+    </div>
   </div>
 
-  <fieldset class="fieldset">
-    <legend>Status</legend>
-    <%= f.check_box :active, type:"checkbox" %>
-    <label for="checkbox12">Opublikowany</label>
-    <%= f.check_box :highlight, type:"checkbox" %>
-    <label for="checkbox12">Wyróżniony</label>
-  </fieldset>
-
-  <span class="label">Wstęp do artykułu</span>
-  <%= f.cktext_area :intro, placeholder:"Wstęp" %><br>
-
-  <span class="label">Część właściwa artykułu</span>
-  <%= f.cktext_area :content, placeholder:"Artykuł" %><br>
-
-  <div class="input-group">
-    <span class="input-group-label">Wyświetlenia</span>
-    <%= f.number_field :visit, :value => 0, class:"input-group-field"  %>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <span class="label">Wstęp do artykułu</span>
+        <%= f.cktext_area :intro, placeholder:"Wstęp" %><br>
+      </div>
+    </div>
   </div>
 
-  <p>
-    <%= f.file_field :image %>
-  </p>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <span class="label">Część właściwa artykułu</span>
+        <%= f.cktext_area :content, placeholder:"Artykuł" %><br>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <label>
-      <%= f.check_box :remove_image %>
-      Remove avatar
-    </label>
-  </p>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Wyświetlenia</span>
+          <%= f.number_field :visit, :value => 0, class:"input-group-field"  %>
+        </div>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= f.submit :Dodaj, class:"button success" %>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= link_to 'Wróć', articles_path, class:"button alert" %>
+      </div>
+    </div>
 
-  <%= f.submit :Dodaj, class:"button success" %>
-  <%= link_to 'Wróć', articles_path, class:"button alert" %>
+  </div>
 
 <% end %>
