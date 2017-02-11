@@ -1,34 +1,42 @@
-
-<h1>Comments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Article</th>
-      <th>Author</th>
-      <th>Content</th>
-      <th>Email</th>
-      <th>Ip</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= Article.where(id:comment.article).pluck(:id).last %></td>
-        <td><%= comment.author %></td>
-        <td><%= comment.content %></td>
-        <td><%= comment.email %></td>
-        <td><%= comment.ip %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Komentarz - lista</h1>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New Comment', new_comment_path %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table>
+        <thead>
+          <tr>
+            <th>Treść</th>
+            <th>Artykuł</th>
+            <th>Autor</th>
+            <th>Email</th>
+            <th>Adres IP</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @comments.each do |comment| %>
+          <% if current_user.id == Article.where(id:comment.article).pluck(:user_id).last || current_user.try(:admin?) %>
+            <tr>
+              <td><%= link_to comment.content, comment %></td>
+              <td><%= link_to Article.where(id:comment.article).pluck(:title).last, comment.article %></td>
+              <td><%= comment.author %></td>
+              <td><%= comment.email %></td>
+              <td><%= comment.ip %></td>
+              <td align="center"><%= link_to 'Usuń', comment, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %> <% end %>
+        </tbody>
+      </table>
+      <p><%= will_paginate @comments, renderer: FoundationPagination::Rails %></p> <br>
+    </div>
+  </div>
+</div>

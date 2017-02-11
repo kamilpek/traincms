@@ -49,15 +49,46 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="large-6 columns">
-    <div class="callout" align="center">
-      <%= link_to 'Edycja', edit_article_path(@article), class:"warning button" %>
+<% if current_user %>
+  <% if current_user.id == @article.user_id || current_user.try(:admin?) %>
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="callout" align="center">
+          <%= link_to 'Edycja', edit_article_path(@article), class:"warning button" %>
+        </div>
+      </div>
+      <div class="large-6 columns">
+        <div class="callout" align="center">
+          <%= link_to 'Powrót', articles_path, class:"button" %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="large-6 columns">
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="large-12 columns">
     <div class="callout" align="center">
-      <%= link_to 'Powrót', articles_path, class:"button" %>
+      <h3> Komentarze </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Autor</th>
+            <th>Treść</th>
+            <th>Adres IP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+          <% if @article.id == Article.where(id:comment.article).pluck(:id).last %>
+            <tr>
+              <td><%= comment.author %></td>
+              <td><%= comment.content %></td>
+              <td><%= comment.ip %></td>
+            </tr>
+          <% end %><% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -65,29 +96,7 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <h3> komentarze </h3>
-
-      <% @comments.order("created_at desc").each do |comment| %>
-      <% if @article.id == Article.where(id:comment.article).pluck(:id).last %>
-      <table>
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Content</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @comments.each do |comment| %>
-            <tr>
-              <td><%= comment.author %></td>
-              <td><%= comment.content %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% end %> <% end %>
-
+      <h3> Dodaj komentarz </h3>
         <%= form_for Comment.new do |f| %>
           <%= f.hidden_field :article_id, :value => @article.id  %>
           <%= f.hidden_field :ip, :value => request.remote_ip %>

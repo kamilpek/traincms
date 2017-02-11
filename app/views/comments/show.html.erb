@@ -1,28 +1,56 @@
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Komentarz numer: <%= @comment.id %></h1>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Article:</strong>
-  <%= @comment.article %>
-</p>
+<div class="row">
+  <div class="large-3 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-page"> Artykuł: <%= link_to Article.where(id:@comment.article).pluck(:title).last, @comment.article %></i></h5>
+    </div>
+  </div>
+  <div class="large-3 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-torso"> Autor: <%= @comment.author %></i></h5>
+    </div>
+  </div>
+  <div class="large-3 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-mail"> Email: <%= @comment.email %></i></h5>
+    </div>
+  </div>
+  <div class="large-3 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-marker"> Adres IP: <%= @comment.ip %></i></h5>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @comment.author %>
-</p>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h5><%= @comment.content %></h5>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @comment.content %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @comment.email %>
-</p>
-
-<p>
-  <strong>Ip:</strong>
-  <%= @comment.ip %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<% if current_user %>
+  <% if current_user.id == Article.where(id:@comment.article).pluck(:user_id).last || current_user.try(:admin?) %>
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="callout" align="center">
+          <%= link_to 'Edycja', edit_comment_path(@comment), class:"warning button" %>
+        </div>
+      </div>
+      <div class="large-6 columns">
+        <div class="callout" align="center">
+          <%= link_to 'Powrót', comments_path, class:"button" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
