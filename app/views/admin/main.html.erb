@@ -58,7 +58,7 @@
   <div class="large-6 columns">
     <div class="callout">
       <h5>Najpopularniejsze artkuły</h5>
-      <table>
+      <table class="stack">
         <thead>
           <tr>
             <th>Tytuł</th>
@@ -84,7 +84,7 @@
   <div class="large-6 columns">
     <div class="callout">
       <h5>Najnowsze komentarze</h5>
-      <table>
+      <table class="stack">
         <thead>
           <tr>
             <th>Artykuł</th>
@@ -95,8 +95,8 @@
         <tbody>
           <% @comments.order("created_at desc").take(5).each do |comment| %>
             <tr>
-              <td><%= Article.where(id:comment.article_id).pluck(:title).last %></td>
-              <td><%= truncate(comment.content, :length => 15) %></td>
+              <td><%= link_to Article.where(id:comment.article).pluck(:title).last, comment.article %></td>
+              <td><%= link_to truncate(comment.content, :length => 15), comment %></td>
               <td><%= comment.created_at.strftime("%d.%m.%Y") %></td>
             </tr>
           <% end %>
@@ -107,7 +107,7 @@
   <div class="large-6 columns">
     <div class="callout">
       <h5>Najnowsze artykuły</h5>
-      <table>
+      <table class="stack">
         <thead>
           <tr>
             <th>Tytuł</th>
@@ -127,6 +127,7 @@
       </table>
     </div>
   </div>
+</div>
 <% else %>
   <br>
   <div class="callout">

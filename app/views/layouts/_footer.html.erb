@@ -1,0 +1,20 @@
+<footer>
+  <div class="callout">
+    <div class="row expanded">
+      <div class="medium-6 columns">
+        <ul class="menu">
+          <li><%= link_to 'O Projekcie', pages_about_path %></li>
+          <li><%= link_to 'Pomoc', pages_help_path %></li>
+          <% if current_user.try(:admin?) %>
+          <li><%= link_to 'Zaplecze', admin_main_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="medium-6 columns">
+        <ul class="menu align-right">
+          <li class="menu-text">Copyright © 2017 TrainCMS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

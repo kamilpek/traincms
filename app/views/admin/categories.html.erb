@@ -12,7 +12,7 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <table>
+      <table class="stack">
         <thead>
           <tr>
             <th>Tytuł</th>
@@ -28,9 +28,9 @@
               <td><%= link_to category.title, category %></td>
               <td><%= category.desc %></td>
               <% if category.active == true %>
-                <td>Tak</td>
+                <td>Aktywny</td>
               <% else %>
-                <td>Nie</td>
+                <td>Nie Aktywny</td>
               <% end %>
               <td><%= link_to 'Edycja', edit_category_path(category), class:"button tiny" %></td>
               <td><%= link_to 'Usuń', category, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>

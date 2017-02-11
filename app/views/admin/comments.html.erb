@@ -28,7 +28,7 @@
           <% @comments.each do |comment| %>
             <tr>
               <td><%= link_to comment.content, comment %></td>
-              <td><%= Article.where(id:comment.article).pluck(:title).last %></td>
+              <td><%= link_to Article.where(id:comment.article).pluck(:title).last, comment.article %></td>
               <td><%= comment.author %></td>
               <td><%= comment.email %></td>
               <td><%= comment.ip %></td>
