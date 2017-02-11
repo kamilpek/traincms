@@ -1,118 +1,114 @@
 <% content_for :title, " - Strona Główna." %>
+<br>
+<div class="row">
+  <div class="medium-12 columns">
+    <div class="callout" align="center">
+      <% @articles.where(:highlight => true).take(1).each do |article| %>
+        <p> <%= link_to image_tag(article.image.url, size: "720x480"), article %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-12 columns">
+    <div class="callout" align="center">
+      <h2 style="margin: 0;" class="text-center">AKTUALNOŚCI</h2>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="medium-8 columns">
-    <% @articles.where(:highlight => true).take(1).each do |article| %>
-      <p> <%= link_to image_tag(article.image.url, size: "900x450"), article %> </p>
-    <% end %>
-  </div>
-  <div class="medium-4 columns">
-    <% @articles.where(:highlight => true).take(2).each do |article| %>
-      <p> <%= link_to image_tag(article.image.url, size: "400x200"), article %> </p>
-    <% end %>
-  </div>
-</div>
-
-<hr>
-
-<div class="row column">
-  <h4 style="margin: 0;" class="text-center">AKTUALNOŚCI</h4>
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="large-8 columns" style="border-right: 1px solid #E3E5E8;">
-
-  <article>
-
-    <% @articles.order("created_at desc").each do |article| %>
-    <div class="row">
-      <div class="large-6 columns">
-        <p><%= image_tag article.image.url(:thumb) if article.image? %></p>
+      <% @articles.order("created_at desc").each do |article| %>
+      <div class="callout">
+        <div class="row">
+          <div class="large-6 columns">
+            <h6 align="center"><i class="fi-torso" > <%= User.where(id:article.user_id).pluck(:email).last %> </i></h6>
+            <h6 align="center"><i class="fi-calendar"> <%= article.created_at.strftime("%d.%m.%Y") %> </i>
+            <i class="fi-comments"> 0 comments</i></h6>
+          </div>
+          <div class="large-6 columns">
+            <h3 align="center"><%= article.title %></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <p align="center"><%= image_tag article.image.url(:thumb) if article.image? %></p>
+          </div>
+          <div class="large-6 columns">
+            <p><%= raw article.intro.html_safe.to_s %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns"></div>
+          <div class="large-6 columns" align="right">
+            <%= link_to 'Czytaj więcej', article, class:"small button" %>
+          </div>
+        </div>
       </div>
-      <div class="large-6 columns">
-        <h5><%= article.title %></h5>
-        <p>
-          <span><i class="fi-torso"> <%= User.where(id:article.user_id).pluck(:email).last %> </i></span>
-          <span><i class="fi-calendar"> <%= article.created_at.strftime("%d.%m.%Y") %> </i></span>
-          <span><i class="fi-comments"> 0 comments</i></span>
-        </p>
-        <p><%= raw article.intro.html_safe.to_s %></p>
-        <p><%= link_to 'Czytaj więcej', article, class:"button" %> </p>
-      </div>
+      <% end %>
+    <div class="callout" align="center">
+      <%= will_paginate @articles, renderer: FoundationPagination::Rails %>
     </div>
-    <% end %>
-
-    <hr>
-
-    <p><%= will_paginate @articles, renderer: FoundationPagination::Rails %></p>
-
-    </article>
-
   </div>
 
   <div class="large-4 columns">
-
     <aside>
-
         <% if current_user %>
         <div class="row column">
-        <p class="lead">SZYBKIE AKCJE</p>
-          <table style="width:100%">
-            <tr align="center">
-              <td><%= link_to '<font size="24"><i class="fi-page-add"></i></font>'.html_safe, new_article_path %></td>
-              <td><%= link_to '<font size="24"><i class="fi-page"></i></font>'.html_safe, articles_path %></td>
-              <td><%= link_to '<font size="24"><i class="fi-comments"></i></font>'.html_safe, comments_path %></td>
-            </tr>
-            <tr align="center">
-              <td>Nowy Artykuł</td>
-              <td>Moje Artykuły</td>
-              <td>Komentarze</td>
-            </tr>
+          <div class="callout" align="center">
+          <p class="lead">SZYBKIE AKCJE</p>
+            <table style="width:100%">
+              <tr align="center">
+                <td><%= link_to '<font size="24"><i class="fi-page-add"></i></font>'.html_safe, new_article_path %></td>
+                <td><%= link_to '<font size="24"><i class="fi-page"></i></font>'.html_safe, articles_path %></td>
+                <td><%= link_to '<font size="24"><i class="fi-comments"></i></font>'.html_safe, comments_path %></td>
+              </tr>
+              <tr align="center">
+                <td>Nowy Artykuł</td>
+                <td>Moje Artykuły</td>
+                <td>Komentarze</td>
+              </tr>
 
-          </table>
+            </table>
+          </div>
         </div>
         <% end %>
 
       <div class="row column">
-        <p class="lead">NAJPOPULARNIEJSZE ARTYKUŁY</p>
-
-        <% @articles.order("visit desc").take(5).each do |article| %>
-
-        <div class="media-object">
-          <div class="media-object-section">
-            <%= image_tag(article.image.url, size: "100x100") %>
+        <div class="callout">
+          <p class="lead">NAJPOPULARNIEJSZE ARTYKUŁY</p>
+          <% @articles.order("visit desc").take(5).each do |article| %>
+          <div class="media-object">
+            <div class="media-object-section">
+              <%= image_tag(article.image.url, size: "100x100") %>
+            </div>
+            <div class="media-object-section">
+              <h5> <%= link_to article.title, article %> </h5>
+            </div>
           </div>
-          <div class="media-object-section">
-            <h5> <%= link_to article.title, article %> </h5>
-          </div>
+          <% end %>
         </div>
-
-        <% end %>
-
       </div>
-
     </aside>
-
   </div>
 </div>
 
 <footer>
-  <div class="row expanded">
-
-    <div class="medium-6 columns">
-      <ul class="menu">
-        <li><%= link_to 'O Projekcie', pages_about_path %></li>
-        <li><%= link_to 'Pomoc', pages_help_path %></li>
-      </ul>
-    </div>
-
-    <div class="medium-6 columns">
-      <ul class="menu align-right">
-        <li class="menu-text">Copyright © 2017 TrainCMS</li>
-      </ul>
+  <div class="callout">
+    <div class="row expanded">
+      <div class="medium-6 columns">
+        <ul class="menu">
+          <li><%= link_to 'O Projekcie', pages_about_path %></li>
+          <li><%= link_to 'Pomoc', pages_help_path %></li>
+        </ul>
+      </div>
+      <div class="medium-6 columns">
+        <ul class="menu align-right">
+          <li class="menu-text">Copyright © 2017 TrainCMS</li>
+        </ul>
+      </div>
     </div>
   </div>
-
 </footer>
