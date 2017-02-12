@@ -14,11 +14,15 @@
   <body>
     <% if yield(:menu) == "admin" %>
       <%= render 'layouts/header-admin' %>
+    <% elsif yield(:menu) == "printer" %>
     <% else %>
       <%= render 'layouts/header' %>
     <% end %>
     <%= render 'layouts/messages' %>
     <%= yield %>
+    <% if yield(:menu) == "printer" %>
+    <% else %>
     <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>

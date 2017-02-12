@@ -8,19 +8,42 @@
 </div>
 
 <div class="row">
-  <div class="large-4 columns">
+  <div class="large-3 columns">
     <div class="callout" align="center">
       <h5><i class="fi-folder"> Kategoria: <%= Category.where(id:@article.category).pluck(:title).last%></i></h5>
     </div>
   </div>
-  <div class="large-4 columns">
+  <div class="large-3 columns">
     <div class="callout" align="center">
       <h5><i class="fi-torsos"> Wyświetlenia: <%= @article.visit %></i></h5>
     </div>
   </div>
-  <div class="large-4 columns">
+  <div class="large-3 columns">
+    <div class="callout" align="center">
+      <h5><i class="fi-calendar"> <%= @article.created_at.strftime("%d.%m.%Y") %></i></h5>
+    </div>
+  </div>
+  <div class="large-3 columns">
     <div class="callout" align="center">
       <h5><i class="fi-torso"> Autor: <%= User.where(id:@article.user_id).pluck(:email).last %></i></h5>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Pobierz Artykuł w PDF', article_path(@article, format: "pdf"), class:'button'%>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Wydrukuj Artykuł', print_article_article_path(@article), :method => :get, class:'button'%>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Wydrukuj Komentarze', print_article_comments_article_path(@article), :method => :get, class:'button'%>
     </div>
   </div>
 </div>

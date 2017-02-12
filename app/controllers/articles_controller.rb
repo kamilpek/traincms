@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!, except: [:show, :print_article, :print_article_comments]
 
   # GET /articles
   # GET /articles.json
@@ -12,9 +12,29 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ArticleOnePdf.new(@article)
+        send_data pdf.render, filename: "article_#{@article.id}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
     @comments = Comment.all
     visited
   end
+
+  def print_article
+    @article = Article.find(params[:id])
+  end
+
+  def print_article_comments
+    @article = Article.find(params[:id])
+    @comments = Comment.all
+  end
+
 
   # GET /articles/new
   def new

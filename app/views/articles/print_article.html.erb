@@ -1,0 +1,56 @@
+<% content_for :title, " - Wydruk artykułu." %>
+<% content_for :menu, "printer" %>
+
+<body onload="printpage()">
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <h1><%= @article.title %></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <h5>
+          <i class="fi-folder"> Kategoria: <%= Category.where(id:@article.category).pluck(:title).last%></i>
+          <i class="fi-calendar"> <%= @article.created_at.strftime("%d.%m.%Y") %></i>
+          <i class="fi-torso"> Autor: <%= User.where(id:@article.user_id).pluck(:email).last %></i>
+        </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= image_tag @article.image.url, width: '500' if @article.image? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= @article.intro.html_safe %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= @article.content.html_safe %>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+      <div class="row" align="center">
+        <div class="medium-12 columns">
+          <%= link_to 'Strona Główna', pages_home_path, class:"button" %></li>
+        </div>
+      </div>
+  </footer>

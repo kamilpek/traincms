@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       member do
         post 'activating'
         post 'highlighting'
+        get 'print_article'
+        get 'print_article_comments'
       end
     end
   end

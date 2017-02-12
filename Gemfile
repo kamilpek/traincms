@@ -66,3 +66,5 @@ gem 'recaptcha', '~> 4.1', :require => 'recaptcha/rails' # captcha
 gem 'ckeditor', '~> 4.2', '>= 4.2.2' # edytor tekstu
 gem 'chartkick', '~> 2.2', '>= 2.2.2' # wykresy
 gem 'groupdate', '~> 3.2' # dodatek do wykresów
+gem 'prawn', '~> 2.1' # pdfy
+gem 'prawn-table', '~> 0.2.2' # pdfy - dodatek
