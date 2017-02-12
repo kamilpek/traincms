@@ -71,6 +71,28 @@ class ArticlesController < ApplicationController
     Article.update(@article.id, :visit => @counter)
   end
 
+  def activating
+    @article = Article.find(params[:id])
+    article = Article.find(@article.id)
+    if @article.active == false
+      article.update_attribute(:active, true)
+    else
+      article.update_attribute(:active, false)
+    end
+    redirect_to articles_path, notice: "Zakutalizowano status artykułu."
+  end
+
+  def highlighting
+    @article = Article.find(params[:id])
+    article = Article.find(@article.id)
+    if @article.highlight == false
+      article.update_attribute(:highlight, true)
+    else
+      article.update_attribute(:highlight, false)
+    end
+    redirect_to articles_path, notice: "Zakutalizowano status artykułu."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article

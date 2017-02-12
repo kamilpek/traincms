@@ -21,6 +21,7 @@
 <div class="row">
   <div class="medium-8 columns">
       <% @articles.order("created_at desc").each do |article| %>
+      <% if article.active? %>
       <div class="callout">
         <div class="row">
           <div class="large-6 columns">
@@ -47,7 +48,7 @@
           </div>
         </div>
       </div>
-      <% end %>
+      <% end %> <% end %>
     <div class="callout" align="center">
       <%= will_paginate @articles, renderer: FoundationPagination::Rails %>
     </div>

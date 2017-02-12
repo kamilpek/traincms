@@ -34,6 +34,15 @@ Rails.application.routes.draw do
     end
   end
 
+  scope "status" do
+    resources :articles do
+      member do
+        post 'activating'
+        post 'highlighting'
+      end
+    end
+  end
+
   resources :articles
   resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
