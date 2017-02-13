@@ -1,14 +1,28 @@
 <% content_for :title, " - Strona Główna." %>
 <br>
+
 <div class="row">
-  <div class="medium-12 columns">
-    <div class="callout" align="center">
-      <% @articles.where(:highlight => true).take(1).each do |article| %>
-        <p> <%= link_to image_tag(article.image.url, size: "720x480"), article %> </p>
-      <% end %>
+  <div class="large-12 columns">
+    <div class="callout">
+      <div class="orbit" data-orbit>
+        <ul class="orbit-container">
+          <button class="orbit-previous">
+            <span class="show-for-sr">Poprzedni Artykuł</span>&#9664;&#xFE0E;</button>
+            <button class="orbit-next">
+              <span class="show-for-sr">Następny Artykuł</span>&#9654;&#xFE0E;</button>
+              <% @articles.where(:highlight => true).take(3).each do |article| %>
+              <li class="is-active orbit-slide" align="center">
+                <%= image_tag(article.image.url, size: "1000x1000") %>
+                <div class="orbit-caption"><%= link_to article.title, article %></div>
+              </li>
+              <% end %>
+            </ul>
+          <br>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
 
 <div class="row">
   <div class="medium-12 columns">
