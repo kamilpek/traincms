@@ -27,3 +27,11 @@ body {
      	background-origin: initial;
      	background-clip: initial;
      	background-color: lightblue; }
+
+h1,h2,h3,h4 {
+      color: #1779ba;
+}
+
+.lead {
+    color: #1779ba;
+}

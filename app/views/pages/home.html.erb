@@ -1,6 +1,7 @@
 <% content_for :title, " - Strona Główna." %>
 <br>
 
+<% if Article.where(highlight:true).count > 0 %>
 <div class="row">
   <div class="large-12 columns">
     <div class="callout">
@@ -22,12 +23,12 @@
         </div>
       </div>
     </div>
-
+<% end %>
 
 <div class="row">
   <div class="medium-12 columns">
     <div class="callout" align="center">
-      <h2 style="margin: 0;" class="text-center">AKTUALNOŚCI</h2>
+      <h2 align="center">AKTUALNOŚCI</h2>
     </div>
   </div>
 </div>
@@ -39,9 +40,8 @@
       <div class="callout">
         <div class="row">
           <div class="large-6 columns">
-            <h6 align="center"><i class="fi-torso" > <%= User.where(id:article.user_id).pluck(:email).last %> </i></h6>
-            <h6 align="center"><i class="fi-calendar"> <%= article.created_at.strftime("%d.%m.%Y") %> </i>
-            <i class="fi-comments"> 0 comments</i></h6>
+            <h6 align="center"><i class="fi-torso" > Autor: <%= User.where(id:article.user_id).pluck(:email).last %> </i></h6>
+            <h6 align="center"><i class="fi-calendar"> Data: <%= article.created_at.strftime("%d.%m.%Y") %> </i> </h6>
           </div>
           <div class="large-6 columns">
             <h3 align="center"><%= article.title %></h3>
@@ -56,8 +56,11 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 columns"></div>
-          <div class="large-6 columns" align="right">
+          <div class="large-6 columns">
+            <h6 align="center"><i class="fi-comments"> Komentarze: <%= Comment.where(article_id:article.id).count %> </i></h6>
+          </div>
+          <div class="large-6 columns" align="center">
+            <%= link_to 'Dodaj komentarz', article_url(article, :anchor => "add_comment") , class:"small button" %>
             <%= link_to 'Czytaj więcej', article, class:"small button" %>
           </div>
         </div>

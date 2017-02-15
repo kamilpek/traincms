@@ -1,3 +1,4 @@
+<% content_for :title, " - #{@article.title}." %>
 <br>
 <div class="row">
   <div class="large-12 columns">
@@ -92,7 +93,7 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <h3> Komentarze </h3>
+      <h3 id="comments"> Komentarze </h3>
       <table class="stack">
         <thead>
           <tr>
@@ -119,7 +120,7 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <h3> Dodaj komentarz </h3>
+      <h3 id="add_comment"> Dodaj Komentarz </h3>
         <%= form_for Comment.new do |f| %>
           <%= f.hidden_field :article_id, :value => @article.id  %>
           <%= f.hidden_field :ip, :value => request.remote_ip %>
