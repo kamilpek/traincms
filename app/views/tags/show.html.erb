@@ -1,13 +1,71 @@
+<% content_for :title, " - #{@tag.title}." %>
+<br>
+<div class="row">
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h1><%= @tag.id %></h1>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <h1><%= @tag.title %></h1>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="callout" align="center">
+      <% if @tag.active == true %>
+        <h1> Aktywny </h1>
+      <% else %>
+        <h1>Nie Aktywny </h1>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tag.title %>
-</p>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table class="stack">
+        <thead>
+          <tr align="center">
+            <th>Tytuł</th>
+            <th>Kategoria</th>
+            <th>Status</th>
+            <th>Wizyty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.order("created_at desc").each do |article| %>
+          <% if article.id == TagRef.where(tag_id:@tag.id).pluck(:article_id).last %>
+            <tr align="center">
+              <td><%= link_to article.title, article %></td>
+              <td><%= Category.where(id:article.category).pluck(:title).last %></td>
+              <% if article.active == true && article.highlight == true %>
+                <td>Aktywny i wyróżniony</td> <% end %>
+              <% if article.active == true && article.highlight == false %>
+                <td>Aktywny i niewyróżniony</td> <% end %>
+              <% if article.active == false && article.highlight == false %>
+                <td>Niektywny i niewyróżniony</td> <% end %>
+              <% if article.active == false && article.highlight == true %>
+                <td>Niektywny i wyróżniony</td> <% end %>
+              <td><%= article.visit %></td>
+            </tr>
+          <% end %> <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Active:</strong>
-  <%= @tag.active %>
-</p>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Edycja', edit_tag_path(@tag), class:"warning button" %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Lista Tagów', tags_path, class:"button" %>
+    </div>
+  </div>
+</div>

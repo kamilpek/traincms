@@ -76,6 +76,13 @@
         <% if current_user %>
         <div class="row column">
           <div class="callout" align="center">
+            <p class="lead">Witaj
+                                  <%= User.where(id:current_user.id).pluck(:email).last%>.</p>
+          </div>
+        </div>
+
+        <div class="row column">
+          <div class="callout" align="center">
           <p class="lead">SZYBKIE AKCJE</p>
             <table style="width:100%">
               <tr align="center">
@@ -107,6 +114,21 @@
             </div>
           </div>
           <% end %>
+        </div>
+      </div>
+
+      <div class="row column">
+        <div class="callout">
+          <p class="lead" align="center">TAGI</p>
+          <table>
+            <tbody align="center">
+              <% @tags.order("created_at desc").each do |tag| %>
+                <tr>
+                  <td><%= link_to tag.title, tag %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
 

@@ -1,0 +1,32 @@
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1><%= @article.title %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h3> Dodaj Tagi </h3>
+      <%= form_for TagRef.new do |f| %>
+        <%= f.hidden_field :article_id, :value => @article.id  %>
+        <div class="input-group">
+          <span class="input-group-label">Autor</span>
+          <%= f.collection_select :tag_id, Tag.all, :id, :title, {prompt: "Wybierz"}, {class:"input-group-field"} %>
+        </div>
+        <%= f.submit "Dodaj Tag", class:"succes button" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1> "zatwierdź" </h1>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
       end
     end
     @comments = Comment.all
+    @tag_refs = TagRef.all
     visited
   end
 
@@ -35,6 +36,11 @@ class ArticlesController < ApplicationController
     @comments = Comment.all
   end
 
+  def article_tags
+    @article = Article.find(params[:id])
+    @tags = Tag.all
+    @tag_refs = TagRef.all
+  end
 
   # GET /articles/new
   def new

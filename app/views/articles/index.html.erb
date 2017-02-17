@@ -19,8 +19,7 @@
             <th>Kategoria</th>
             <th>Status</th>
             <th>Wizyty</th>
-            <th>Autor</th>
-            <th colspan="4" >Akcje</th>
+            <th colspan="5" >Akcje</th>
           </tr>
         </thead>
         <tbody>
@@ -38,9 +37,9 @@
               <% if article.active == false && article.highlight == true %>
                 <td>Niektywny i wyróżniony</td> <% end %>
               <td><%= article.visit %></td>
-              <td><%= User.where(id:article.user_id).pluck(:email).last %></td>
               <td><%= link_to 'Aktywacja', activating_article_path(article), method: :activating, data: { confirm: "Jesteś pewny?" }, class:'warning button tiny' %>
               <td><%= link_to 'Wyróżnienie', highlighting_article_path(article), method: :highlighting, data: { confirm: "Jesteś pewny?" }, class:'warning button tiny' %>
+              <td><%= link_to 'Tagi', article_tags_article_path(article), method: :article_tags, class:'success button tiny' %>
               <td><%= link_to 'Edycja', edit_article_path(article), class:"button tiny" %></td>
               <td><%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
             </tr>

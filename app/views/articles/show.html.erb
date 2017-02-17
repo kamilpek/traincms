@@ -73,6 +73,20 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h3 id="comments"> Tagi </h3>
+      <h5>
+        <% @tag_refs.each do |tag_refs| %>
+          <% if @article.id == Article.where(id:tag_refs.article_id).pluck(:id).last %>
+          <%= link_to Tag.where(id:tag_refs.tag_id).pluck(:title).last, tag_path(tag_refs.tag_id)  %>
+        <% end %><% end %>
+      </h5>
+    </div>
+  </div>
+</div>
+
 <% if current_user %>
   <% if current_user.id == @article.user_id || current_user.try(:admin?) %>
     <div class="row">

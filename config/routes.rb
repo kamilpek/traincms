@@ -41,6 +41,7 @@ Rails.application.routes.draw do
         post 'highlighting'
         get 'print_article'
         get 'print_article_comments'
+        get 'article_tags'
       end
     end
   end
