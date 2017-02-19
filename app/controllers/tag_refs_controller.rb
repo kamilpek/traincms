@@ -25,10 +25,11 @@ class TagRefsController < ApplicationController
   # POST /tag_refs.json
   def create
     @tag_ref = TagRef.new(tag_ref_params)
+    @article = Article.find(params[:article])
 
     respond_to do |format|
       if @tag_ref.save
-        format.html { redirect_to @tag_ref, notice: 'Tag ref was successfully created.' }
+        format.html {redirect_to article_tags_article_path(@article), notice: 'Dodano Tag do artykułu.' }
         format.json { render :show, status: :created, location: @tag_ref }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class TagRefsController < ApplicationController
   def update
     respond_to do |format|
       if @tag_ref.update(tag_ref_params)
-        format.html { redirect_to @tag_ref, notice: 'Tag ref was successfully updated.' }
+        format.html { redirect_to @tag_ref, notice: 'Zmodyfikowano Tag.' }
         format.json { render :show, status: :ok, location: @tag_ref }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class TagRefsController < ApplicationController
   def destroy
     @tag_ref.destroy
     respond_to do |format|
-      format.html { redirect_to tag_refs_url, notice: 'Tag ref was successfully destroyed.' }
+      format.html { redirect_to tag_refs_url, notice: 'Usunięto Tag z artykułu.' }
       format.json { head :no_content }
     end
   end

@@ -10,14 +10,41 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <h3> Dodaj Tagi </h3>
+      <h3 id="comments"> Tagi </h3>
+      <h5>
+        <% @tag_refs.each do |tag_refs| %>
+          <% if @article.id == Article.where(id:tag_refs.article_id).pluck(:id).last %>
+          <%= link_to Tag.where(id:tag_refs.tag_id).pluck(:title).last, tag_path(tag_refs.tag_id)  %>
+        <% end %><% end %>
+      </h5>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <h3> Dodaj Nowy Tag </h3>
+      <%= form_for Tag.new do |f| %>
+        <%= f.hidden_field :active, :value => true %>
+        <div class="input-group">
+          <span class="input-group-label">Tytuł</span>
+          <%= f.text_field :title, type:"text", class:"input-group-field" %>
+        </div>
+        <%= f.button "Dodaj Nowy Tag", name: "article", value: @article.id, class:'success button' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <h3> Dodaj Tagi do Artykułu </h3>
       <%= form_for TagRef.new do |f| %>
         <%= f.hidden_field :article_id, :value => @article.id  %>
         <div class="input-group">
-          <span class="input-group-label">Autor</span>
+          <span class="input-group-label">Tagi</span>
           <%= f.collection_select :tag_id, Tag.all, :id, :title, {prompt: "Wybierz"}, {class:"input-group-field"} %>
         </div>
-        <%= f.submit "Dodaj Tag", class:"succes button" %>
+        <%= f.button "Dodaj Nowy Tag", name: "article", value: @article.id, class:'success button' %>
       <% end %>
     </div>
   </div>
@@ -26,7 +53,7 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <h1> "zatwierdź" </h1>
+      <%= link_to 'Powórt do listy Artykułów', articles_path, class:"button" %>
     </div>
   </div>
 </div>

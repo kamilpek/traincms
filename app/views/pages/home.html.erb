@@ -125,6 +125,7 @@
               <% @tags.order("created_at desc").each do |tag| %>
                 <tr>
                   <td><%= link_to tag.title, tag %></td>
+                  <td><%= TagRef.where(tag_id:tag.id).count %></td>
                 </tr>
               <% end %>
             </tbody>
