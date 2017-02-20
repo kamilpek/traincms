@@ -1,5 +1,50 @@
 <% content_for :title, " - Tagi." %>
 <% content_for :menu, "admin" %>
 
-<h1>Admin#tags</h1>
-<p>Find me in app/views/admin/tags.html.erb</p>
+</br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Zaplecze - Zarządzanie tagami.</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table class="stack">
+        <thead>
+          <tr>
+            <th>Nazwa</th>
+            <th>Status</th>
+            <th colspan="2">Akcje</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr>
+              <td><%= tag.title %></td>
+              <% if tag.active == true %>
+                <td>Aktywny</td>
+              <% else %>
+                <td>Nie aktywny</td>
+              <% end %>
+              <td><%= link_to 'Edycja', edit_tag_path(tag), class:"warning button tiny" %></td>
+              <td><%= link_to 'Usuwanie', tag, method: :delete, data: { confirm: 'Jesteś tego pewny?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Dodaj nowy Tag', new_tag_path, class:"succes button" %>
+    </div>
+  </div>
+</div>

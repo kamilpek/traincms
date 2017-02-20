@@ -1,12 +1,34 @@
 <%= simple_form_for(@tag) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :active %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <div class="input-group">
+        <span class="input-group-label">Tytuł</span>
+        <%= f.text_field :title, type:"text", class:"input-group-field" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <div class="input-group">
+        <%= f.check_box :active, type:"checkbox" %>
+        <label for="checkbox12">Aktywny</label>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= f.submit :Dodaj, class:"success button" %>
+    </div>
+  </div>
+</div>
+
 <% end %>

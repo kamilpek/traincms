@@ -22,9 +22,11 @@
   </div>
 </div>
 
+<% if TagRef.where(tag_id:@tag.id).count > 0 %>
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
+      <h3>Powiązane artykuły</h3>
       <table class="stack">
         <thead>
           <tr align="center">
@@ -56,6 +58,15 @@
     </div>
   </div>
 </div>
+<% else %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h3>Brak powiązanych artykułów.</h3>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <div class="row">
   <div class="large-6 columns">

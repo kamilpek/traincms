@@ -20,6 +20,12 @@
   <div class="large-2 columns">
     <div class="callout" align="center">
       <h5>Zarządzaj Kategoriami</h5>
+      <%= link_to '<font size="24"><i class="fi-page"></i></font>'.html_safe, admin_articles_path %>
+    </div>
+  </div>
+  <div class="large-2 columns">
+    <div class="callout" align="center">
+      <h5>Zarządzaj Kategoriami</h5>
       <%= link_to '<font size="24"><i class="fi-folder"></i></font>'.html_safe, admin_categories_path %>
     </div>
   </div>
@@ -41,18 +47,42 @@
       <%= link_to '<font size="24"><i class="fi-torsos"></i></font>'.html_safe, admin_users_path %>
     </div>
   </div>
-  <div class="large-2 columns">
-    <div class="callout" align="center">
-      <h5>Kalendarz wydarzeń</h5>
-      <font size="24"><i class="fi-calendar"></i></font>
-    </div>
-  </div>
 </div>
 
 <div class="row">
   <div class="large-6 columns">
     <div class="callout">
       <h5>Statystyki</h5>
+      <table class="stack">
+        <thead>
+          <tr>
+            <th>Kategoria</th>
+            <th>Ilość</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Ilość Artykułów</td>
+              <td><%= Article.all.count %></strong></td>
+            </tr>
+            <tr>
+              <td>Ilość Kategorii</td>
+              <td><%= Category.all.count %></strong></td>
+            </tr>
+            <tr>
+              <td>Ilość Komentarzy</td>
+              <td><%= Comment.all.count %></strong></td>
+            </tr>
+            <tr>
+              <td>Ilość Tagów</td>
+              <td><%= Tag.all.count %></strong></td>
+            </tr>
+            <tr>
+              <td>Ilość Użytkowników</td>
+              <td><%= User.all.count %></strong></td>
+            </tr>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="large-6 columns">
