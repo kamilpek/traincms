@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :calendar, only: [:show], controller: :calendar
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :comments
   resources :components
