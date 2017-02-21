@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :menu_types
   resources :tag_refs
   resources :tags
-  devise_for :users, controllers: { sessions: 'devise/sessions', registrations: 'registrations' }
+  devise_for :users, controllers: { sessions: 'devise/sessions',
+                                    registrations: 'registrations',
+                                    confirmations: 'confirmations' }
 
   resources :users
 

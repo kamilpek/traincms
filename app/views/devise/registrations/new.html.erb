@@ -40,6 +40,8 @@
             <%= f.text_field :password_confirmation, type:"password", required: true, class:"input-group-field" %>
           </div>
         </div>
+        <%= flash[:recaptcha_error] %>
+        <%= recaptcha_tags %> <br>
         <div class="form-actions">
           <%= f.button :submit, "Zarejestruj", class:"success button" %>
         </div>
