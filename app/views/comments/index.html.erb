@@ -24,6 +24,7 @@
 
         <tbody>
           <% @comments.each do |comment| %>
+          <% if user_signed_in? %>
           <% if current_user.id == Article.where(id:comment.article).pluck(:user_id).last || current_user.try(:admin?) %>
             <tr>
               <td><%= link_to comment.content, comment %></td>
@@ -33,7 +34,7 @@
               <td><%= comment.ip %></td>
               <td align="center"><%= link_to 'Usuń', comment, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
             </tr>
-          <% end %> <% end %>
+          <% end %> <% end %> <% end %>
         </tbody>
       </table>
       <p><%= will_paginate @comments, renderer: FoundationPagination::Rails %></p> <br>
