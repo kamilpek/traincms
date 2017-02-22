@@ -25,6 +25,13 @@
     <div class="callout">
       <%= calendar @date do |date| %>
         <%= date.day %>
+        <% @articles.order("created_at desc").each do |article| %>
+          <% if date.strftime("%Y-%m-%d") == article.created_at.strftime("%Y-%m-%d") %>
+            <ul>
+              <li><%= link_to article.title, article %></li>
+            </ul>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
