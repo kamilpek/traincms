@@ -1,0 +1,90 @@
+<% content_for :title, " - Wydarzenia." %>
+
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Wydarzenia</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-4 columns">
+    <div class="callout" align="center">
+      <%= link_to events_path(date: @date - 1.month), class: "button" do %>
+        <i class="fi-calendar"> Poprzedni Miesiąc</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="callout" align="center">
+      <h3 id="month"><%= l(@date, format: :calendar) %></h3>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="callout" align="center">
+      <%= link_to events_path(date: @date + 1.month), class: "button" do %>
+        <i class="fi-calendar"> Następny Miesiąc</i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= calendar @date do |date| %>
+        <%= date.day %>
+        <% @events.order("created_at desc").each do |event| %>
+          <% if date.strftime("%Y-%m-%d") == event.term.strftime("%Y-%m-%d") %>
+            <ul>
+              <li><%= link_to event.title, event %></li>
+            </ul>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Active</th>
+            <th>Highlight</th>
+            <th>Visit</th>
+            <th>Followers</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.title %></td>
+              <td><%= event.active %></td>
+              <td><%= event.highlight %></td>
+              <td><%= event.visit %></td>
+              <td><%= event.followers %></td>
+              <td><%= link_to 'Show', event %></td>
+              <td><%= link_to 'Edit', edit_event_path(event) %></td>
+              <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div></div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'New Event', new_event_path, class:'button' %>
+    </div>
+  </div>
+</div>

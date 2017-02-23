@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :events
   resource :calendar, only: [:show], controller: :calendar
 
   mount Ckeditor::Engine => '/ckeditor'

@@ -1,0 +1,20 @@
+<% content_for :title, " - Nowe wydarzenie." %>
+
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Nowe Wydarzenie</h1>
+    </div>
+  </div>
+</div>
+
+<%= render 'form', event: @event %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Lista Wydarzeń', events_path, class:'alert button' %>
+    </div>
+  </div>
+</div>

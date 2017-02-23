@@ -1,0 +1,90 @@
+<%= form_for @event, html: { multipart: true} do |f| %>
+<% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Tytuł</span>
+          <%= f.text_field :title, type:"text", class:"input-group-field" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Autor</span>
+          <%= f.text_field :post, :value => current_user.email, :readonly => true, class:"input-group-field" %><br>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :active, type:"checkbox" %>
+          <label for="checkbox12">Opublikowany</label>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :highlight, type:"checkbox" %>
+          <label for="checkbox12">Wyróżniony</label>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= f.check_box :remove_image, type:"checkbox" %>
+        <label for="checkbox12">Usuń obrazek</label>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="callout" align="center">
+          <span class="label">Opis wydarzenia</span>
+          <%= f.cktext_area :content, placeholder:"Artykuł" %><br>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Data wydarzenia</span>
+          <%= f.text_field :term, type:"date", :value => Time.now.strftime('%Y-%m-%d'), class:"input-group-field" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= f.submit :Dodaj, class:'success button' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  content: MyText
+  active: false
+  highlight: false
+  visit: 1
+  followers: 1
+
+two:
+  title: MyText
+  content: MyText
+  active: false
+  highlight: false
+  visit: 1
+  followers: 1

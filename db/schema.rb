@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221181821) do
+ActiveRecord::Schema.define(version: 20170223165317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,20 @@ ActiveRecord::Schema.define(version: 20170221181821) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["position_id"], name: "index_components_on_position_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.text     "title"
+    t.text     "content"
+    t.boolean  "active"
+    t.boolean  "highlight"
+    t.integer  "visit"
+    t.integer  "followers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date     "term"
+    t.integer  "user_id"
+    t.text     "image"
   end
 
   create_table "menu_types", force: :cascade do |t|
