@@ -62,6 +62,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5' # paginacja
 gem 'will_paginate-foundation', '~> 6.2' # paginacja - wyglad
 gem 'carrierwave', '~> 1.0' # upload plików
 gem 'rmagick', '~> 2.16', :require => 'rmagick' # upload plików - obrazki
+gem 'mini_magick', '~> 4.6', '>= 4.6.1' # upload plików - obrazki
 gem 'recaptcha', '~> 4.1', :require => 'recaptcha/rails' # captcha
 gem 'ckeditor', '~> 4.2', '>= 4.2.2' # edytor tekstu
 gem 'chartkick', '~> 2.2', '>= 2.2.2' # wykresy
