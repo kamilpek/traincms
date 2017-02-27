@@ -20,7 +20,7 @@
      text-decoration: underline; }
 
 body {
-      background-image: url(pattern.png);
+      background-image: url(http://res.cloudinary.com/traincms-herokuapp-com/image/upload/v1488208634/pattern_zdfzdo.png);
      	background-repeat: repeat;
      	background-position:right top;
      	background-attachment: fixed;
