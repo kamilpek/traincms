@@ -13,8 +13,10 @@
               <span class="show-for-sr">Następny Artykuł</span>&#9654;&#xFE0E;</button>
               <% @articles.where(:highlight => true).take(3).each do |article| %>
               <li class="is-active orbit-slide" align="center">
-                <%= image_tag(article.image.url, size: "1000x1000") %>
-                <div class="orbit-caption"><%= link_to article.title, article %></div>
+                <% if article.image? %>
+                  <%= image_tag(article.image.url, size: "1000x1000") %>
+                  <div class="orbit-caption"><%= link_to article.title, article %></div>
+                <% end %>
               </li>
               <% end %>
             </ul>
@@ -107,7 +109,9 @@
           <% @articles.order("visit desc").take(5).each do |article| %>
           <div class="media-object">
             <div class="media-object-section">
-              <%= image_tag(article.image.url, size: "100x100") %>
+              <% if article.image? %>
+                <%= image_tag(article.image.url, size: "100x100") %>
+              <% end %>
             </div>
             <div class="media-object-section">
               <h5> <%= link_to article.title, article %> </h5>
@@ -123,7 +127,9 @@
           <% @events.order("term").take(5).each do |event| %>
           <div class="media-object">
             <div class="media-object-section">
-              <%= image_tag(event.image.url, size: "100x100") %>
+              <% if event.image? %>
+                <%= image_tag(event.image.url, size: "100x100") %>
+              <% end %>
             </div>
             <div class="media-object-section">
               <h5> <%= link_to event.title, event %> </h5>
