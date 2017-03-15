@@ -5,10 +5,6 @@ Rails.application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :comments
-  resources :components
-  resources :positions
-  resources :menus
-  resources :menu_types
   resources :tag_refs
   resources :tags
   devise_for :users, controllers: { sessions: 'devise/sessions',
