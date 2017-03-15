@@ -11,22 +11,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_area :title %>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Tytuł</span>
+          <%= f.text_field :title, type:"text", class:"input-group-field" %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :desc %>
-    <%= f.text_area :desc %>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Krótki Opis</span>
+          <%= f.text_field :desc, type:"text", class:"input-group-field" %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :active, type:"checkbox" %>
+          <label for="checkbox12">Opublikowany</label>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= f.submit :Zatwierdź, class:"button success" %>
+      </div>
+    </div>
   </div>
+
 <% end %>

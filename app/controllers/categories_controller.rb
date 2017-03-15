@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show]
+  before_filter :check_if_admin, except: [:show]
 
   # GET /categories
   # GET /categories.json
@@ -72,5 +74,15 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:title, :desc, :active)
+    end
+
+
+  protected
+    def check_if_admin
+      if signed_in?
+        redirect_to categories_path, notice: "Dodawanie kategorii dozwolone tylko dla administratora." unless current_user.admin?
+      else
+        raise 'Proszę się zalgować.'
+      end
     end
 end

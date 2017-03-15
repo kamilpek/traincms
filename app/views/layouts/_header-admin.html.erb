@@ -12,11 +12,13 @@
       <li><a href="#">Artykuły</a>
         <ul class="menu vertical">
           <li><%= link_to 'Lista', admin_articles_path %></li>
+          <li><%= link_to 'Dodaj', new_article_path %></li>
         </ul>
       </li>
       <li><a href="#">Kategorie</a>
         <ul class="menu vertical">
           <li><%= link_to 'Lista', admin_categories_path %></li>
+          <li><%= link_to 'Dodaj', new_category_path %></li>
         </ul>
       </li>
       <li><a href="#">Komentarze</a>
@@ -27,11 +29,7 @@
       <li><a href="#">Tagi</a>
         <ul class="menu vertical">
           <li><%= link_to 'Lista', admin_tags_path %></li>
-        </ul>
-      </li>
-      <li><a href="#">Menu</a>
-        <ul class="menu vertical">
-          <li><%= link_to 'Lista', admin_menus_path %></li>
+          <li><%= link_to 'Dodaj', new_tag_path %></li>
         </ul>
       </li>
       <li><a href="#">Statystyki</a>
