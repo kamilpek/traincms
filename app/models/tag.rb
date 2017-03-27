@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-  has_namy :tag_ref
+  has_many :tag_ref
 end
