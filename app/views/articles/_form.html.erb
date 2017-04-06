@@ -43,16 +43,22 @@
   </div>
 
   <div class="row">
-    <div class="large-3 columns">
+    <div class="large-2 columns">
       <div class="callout" align="center">
           <%= f.check_box :active, type:"checkbox" %>
-          <label for="checkbox12">Opublikowany</label>
+          <label for="checkbox12">Aktywny</label>
       </div>
     </div>
-    <div class="large-3 columns">
+    <div class="large-2 columns">
       <div class="callout" align="center">
           <%= f.check_box :highlight, type:"checkbox" %>
           <label for="checkbox12">Wyróżniony</label>
+      </div>
+    </div>
+    <div class="large-2 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :comments_on, :checked => "checked", type:"checkbox" %>
+          <label for="checkbox12">Komentarze</label>
       </div>
     </div>
     <div class="large-3 columns">
@@ -91,7 +97,7 @@
       <div class="callout" align="center">
         <div class="input-group">
           <span class="input-group-label">Wyświetlenia</span>
-          <%= f.number_field :visit, :value => 0, class:"input-group-field"  %>
+          <%= f.number_field :visit, :value => 0, :readonly => true, class:"input-group-field"  %>
         </div>
       </div>
     </div>

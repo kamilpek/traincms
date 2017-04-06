@@ -18,6 +18,7 @@
             <th>Tytuł</th>
             <th>Opis</th>
             <th>Status</th>
+            <th>Główna</th>
             <th colspan="2">Akcje</th>
           </tr>
         </thead>
@@ -31,6 +32,11 @@
                 <td>Aktywny</td>
               <% else %>
                 <td>Nie Aktywny</td>
+              <% end %>
+              <% if category.home_on == true %>
+                <td>Tak</td>
+              <% else %>
+                <td>Nie</td>
               <% end %>
               <td><%= link_to 'Edycja', edit_category_path(category), class:"button tiny" %></td>
               <td><%= link_to 'Usuń', category, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>

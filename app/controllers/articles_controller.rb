@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-    @articles = Article.paginate(:page => params[:page], :per_page => 5)
+    @articles = @articles.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /articles/1
@@ -127,6 +127,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :category_id, :active, :intro, :content, :visit, :highlight, :user_id, :image)
+      params.require(:article).permit(:title, :category_id, :active, :intro, :content, :visit, :highlight, :user_id, :image, :comments_on)
     end
 end

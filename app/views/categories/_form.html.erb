@@ -34,10 +34,16 @@
   </div>
 
   <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
       <div class="callout" align="center">
           <%= f.check_box :active, type:"checkbox" %>
           <label for="checkbox12">Opublikowany</label>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :home_on, type:"checkbox" %>
+          <label for="checkbox12">Strona Główna</label>
       </div>
     </div>
   </div>
