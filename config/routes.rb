@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/help'
   get 'pages/about'
+  get 'pages/search'
 
   get 'admin/main'
   get 'admin/articles'
@@ -29,8 +30,12 @@ Rails.application.routes.draw do
   scope "admin" do
     resources :users do
       member do
-        delete 'destroy'
+        get 'new'
+        get 'edit'
+        patch 'update'
         post 'grantadmin'
+        post 'create'
+        delete 'destroy'
       end
     end
   end

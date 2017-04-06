@@ -12,4 +12,14 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def search
+    @categories = Category.where("home_on = ?", true)
+    @articles = Article.where(category_id:@categories)
+    if params[:search].nil?
+      @articles = @articles.where(id:0)
+    else
+      @articles = @articles.where(["lower(title) LIKE ?", "%#{params[:search].downcase}%"])
+    end
+  end
 end

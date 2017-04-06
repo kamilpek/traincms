@@ -1,0 +1,55 @@
+<% content_for :title, " - Wyszukiwarka." %>
+
+<br>
+<div class="row">
+  <div class="medium-12 columns">
+    <div class="callout" align="center">
+      <h2 align="center">Wyszukiwarka</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= form_tag pages_search_path, :method => :get do %>
+        <p>
+          <div class="input-group">
+            <span class="input-group-label">Treść</span>
+            <%= text_field_tag :search, params[:search], class:"input-group-field" %>
+            <div class="input-group-button">
+              <%= submit_tag "Szukaj", :content => nil, class:"button" %>
+            </div>
+          </div>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table class="stack">
+        <thead>
+          <tr>
+            <th>Tytuł</th>
+            <th>Kategoria</th>
+            <th>Wizyty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.order("created_at desc").each do |article| %>
+          <% if current_user.id == article.user_id || current_user.admin? %>
+            <tr align="center">
+              <td><%= link_to article.title, article %></td>
+              <td><%= Category.where(id:article.category).pluck(:title).last %></td>
+              <td><%= article.visit %></td>
+            </tr>
+          <% end %> <% end %>
+        </tbody>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>

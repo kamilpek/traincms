@@ -1,11 +1,18 @@
-<% content_for :title, " - Użytkownicy." %>
+<% content_for :title, " - Panel Administracyjny." %>
 <% content_for :menu, "admin" %>
-
-</br>
+<br>
 <div class="row">
   <div class="large-12 columns">
     <div class="callout" align="center">
-      <h1>Zaplecze - Zarządzanie użytkownikami</h1>
+      <h3>Zarządzanie użytkownikami</h3>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Nowy uzytkownik', new_user_path, class:'button' %>
     </div>
   </div>
 </div>
@@ -21,8 +28,8 @@
             <th>Nazwisko</th>
             <th>Email</th>
             <th>Admin?</th>
+            <th>Ostatnie Logowanie</th>
             <th>Rejestracja</th>
-            <th>Logowanie</th>
             <th>Akcje</th>
           </tr>
         </thead>
@@ -38,10 +45,14 @@
               <% else %>
                 <td>Nie</td>
               <% end %>
-
-              <td><%= user.last_sign_in_at.strftime("%d.%m.%Y") %></td>
+              <% if user.last_sign_in_at.nil? %>
+                <td> Jeszcze się nie logował </td>
+              <% else %>
+                <td> <%= user.last_sign_in_at.strftime("%d.%m.%Y; %H:%M") %> </td>
+              <% end %>
               <td><%= user.created_at.strftime("%d.%m.%Y") %></td>
               <td><%= link_to "Admin", grantadmin_user_path(user), method: :grantadmin, data: { confirm: "Jesteś pewny?" }, class:'warning button tiny'%>
+              <%= link_to "Edytuj", edit_user_path(user), class:'second button tiny' %>
               <%= link_to "Usuń", user_path(user), method: :delete, data: { confirm: "Jesteś pewny?" }, class:'alert button tiny' %></td>
             </tr>
           <% end %>
