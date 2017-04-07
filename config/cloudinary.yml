@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: traincms-herokuapp-com
+  api_key: '767817775635673'
+  api_secret: uu1OQ_Qfh-JtU3fmGXmb3BDRr1w
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: traincms-herokuapp-com
+  api_key: '767817775635673'
+  api_secret: uu1OQ_Qfh-JtU3fmGXmb3BDRr1w
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: traincms-herokuapp-com
+  api_key: '767817775635673'
+  api_secret: uu1OQ_Qfh-JtU3fmGXmb3BDRr1w
+  enhance_image_tag: true
+  static_image_support: false

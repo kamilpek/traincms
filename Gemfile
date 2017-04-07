@@ -69,3 +69,4 @@ gem 'chartkick', '~> 2.2', '>= 2.2.2' # wykresy
 gem 'groupdate', '~> 3.2' # dodatek do wykresów
 gem 'prawn', '~> 2.1' # pdfy
 gem 'prawn-table', '~> 0.2.2' # pdfy - dodatek
+gem 'cloudinary', '~> 1.6' # upload - serwis zewnętrzny
