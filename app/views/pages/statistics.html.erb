@@ -1,5 +1,4 @@
 <% content_for :title, " - Statystyki." %>
-<% content_for :menu, "admin" %>
 
 </br>
 <div class="row">
@@ -10,26 +9,17 @@
   </div>
 </div>
 
-
 <div class="row">
   <div class="large-6 columns">
     <div class="callout">
       <h5>Ilość artykułów z podziałem na kategorie</h5>
-      <%= pie_chart Article.group(:category_id).count %>
-      <p align="center">Legenda:
-      <% Category.all.each do |category| %>
-        <strong><%= category.id %>. </strong><%= category.title %>,
-      <% end %> </p>
+      <%= pie_chart Article.joins(:category).group(:title).count %>
     </div>
   </div>
   <div class="large-6 columns">
     <div class="callout">
       <h5>Ilość artkyułów z podziałem na userów</h5>
-      <%= pie_chart Article.group(:user_id).count %>
-      <p align="center">Legenda:
-      <% User.all.each do |user| %>
-        <strong><%= user.id %>. </strong><%= user.email %>,
-      <% end %> </p>
+      <%= pie_chart Article.joins(:user).group(:email).count %>
     </div>
   </div>
 </div>
@@ -47,21 +37,13 @@
   <div class="large-6 columns">
     <div class="callout">
       <h5>Najczęściej komentowane artykuły</h5>
-      <%= pie_chart Comment.group(:article_id).count %>
-      <p align="center">Legenda:
-      <% Article.order("id").all.each do |article| %>
-        <strong><%= article.id %>. </strong><%= article.title %>,
-      <% end %> </p>
+      <%= pie_chart Comment.joins(:article).group(:title).count %>
     </div>
   </div>
   <div class="large-6 columns">
     <div class="callout">
       <h5>Najczęściej czytanie artykuły</h5>
-      <%= pie_chart Article.group(:visit).count %>
-      <p align="center">Legenda:
-      <% Article.order("id").all.each do |article| %>
-        <strong><%= article.id %>. </strong><%= article.title %>,
-      <% end %> </p>
+      <%= pie_chart Article.group(:title).sum(:visit) %>
     </div>
   </div>
 </div>

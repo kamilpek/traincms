@@ -31,9 +31,6 @@ class AdminController < ApplicationController
     @comments = Comment.paginate(:page => params[:page], :per_page => 10)
   end
 
-  def statistics
-  end
-
   def users
     @users = User.all
     @users = User.paginate(:page => params[:page], :per_page => 10)

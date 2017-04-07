@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'pages/help'
   get 'pages/about'
   get 'pages/search'
+  get 'pages/statistics'
 
   get 'admin/main'
   get 'admin/articles'
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
   get 'admin/tags'
   get 'admin/menus'
   get 'admin/comments'
-  get 'admin/statistics'
   get 'admin/users'
 
   scope "admin" do

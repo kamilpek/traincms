@@ -11,6 +11,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.find(params[:id])
+    visited
   end
 
   # GET /events/new
@@ -60,6 +62,16 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def visited
+    @counter = Event.where(id:@event.id).pluck(:visit).last
+    if @counter.nil?
+      @counter = 1
+    else
+      @counter = @counter + 1
+    end
+    Event.update(@event.id, :visit => @counter)
   end
 
   private

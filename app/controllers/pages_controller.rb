@@ -14,6 +14,9 @@ class PagesController < ApplicationController
   def about
   end
 
+  def statistics
+  end
+
   def search
     @categories = Category.where("home_on = ?", true)
     @articles = Article.where(category_id:@categories)

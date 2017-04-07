@@ -13,24 +13,6 @@
       <li><%= link_to 'Komentarze', comments_path %></li>
       <li><%= link_to 'Wydarzenia', events_path %></li>
       <li><%= link_to 'Wyszukiwarka', pages_search_path %>
-      <% if user_signed_in? %>
-        <li class="has-submenu">
-          <a href="#">Moje Konto</a>
-          <ul class="submenu menu vertical">
-            <li><%= link_to 'Zmiany na koncie', edit_user_registration_path %></li>
-            <li><%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete  %></li>
-          </ul>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <% if user_signed_in? %>
-      <li class="menu-text"><%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete  %></li>
-      <% else %>
-      <li class="menu-text"><%= link_to 'Zaloguj', new_user_session_path %></li>
-      <% end %>
     </ul>
   </div>
 </div>

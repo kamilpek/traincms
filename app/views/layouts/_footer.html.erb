@@ -2,9 +2,13 @@
   <div class="callout">
     <div class="row expanded">
       <div class="medium-6 columns">
-        <ul class="menu">
+        <ul class="menu align-left">
+          <li class="menu-text"><%= link_to "Copyright © 2017 TrainCMS", root_path %></li>
           <li><%= link_to 'O Projekcie', pages_about_path %></li>
           <li><%= link_to 'Pomoc', pages_help_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Statystyki', pages_statistics_path %></li>
+          <% end %>
           <% if current_user.try(:admin?) %>
           <li><%= link_to 'Zaplecze', admin_main_path %></li>
           <% end %>
@@ -12,7 +16,12 @@
       </div>
       <div class="medium-6 columns">
         <ul class="menu align-right">
-          <li class="menu-text">Copyright © 2017 TrainCMS</li>
+          <% if user_signed_in? %>
+            <li class="menu-text"><%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete  %></li>
+            <li class="menu-text"><%= link_to 'Zmiana hasła', edit_user_registration_path %></li>
+          <% else %>
+            <li class="menu-text"><%= link_to 'Zaloguj', new_user_session_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>
