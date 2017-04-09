@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :event_guests
   resources :events
   resource :calendar, only: [:show], controller: :calendar
 

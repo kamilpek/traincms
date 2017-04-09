@@ -1,0 +1,14 @@
+<%= simple_form_for(@event_guest) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :event %>
+    <%= f.input :author %>
+    <%= f.input :email %>
+    <%= f.input :ip %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

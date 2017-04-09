@@ -16,7 +16,7 @@
   </div>
   <div class="large-6 columns">
     <div class="callout" align="center">
-    <h5><i class="fi-torsos"> Uczestnicy: <%= @event.followers %></i></h5>
+    <h5><i class="fi-torsos"> Uczestnicy: <%= @event_guests.where(event_id:@event.id).count %></i></h5>
     </div>
   </div>
 </div>
@@ -36,6 +36,43 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h3 id="comments"> Zapisani goście </h3>
+      <% @event_guests.each do |event_guest| %>
+        <% if @event.id == Event.where(id:event_guest.article).pluck(:id).last %>
+          <%= event_guest.author %>,
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h3 id="add_comment"> Zapisz się na to wydarzenie </h3>
+        <%= form_for EventGuest.new do |f| %>
+          <%= f.hidden_field :event_id, :value => @event.id  %>
+          <%= f.hidden_field :ip, :value => request.remote_ip %>
+          <div class="input-group">
+            <span class="input-group-label">Imię i Nazwisko</span>
+            <%= f.text_field :author, type:"text", class:"input-group-field" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-label">Adres e-mail</span>
+            <%= f.text_field :email, type:"email", class:"input-group-field" %>
+          </div>
+          <%= flash[:recaptcha_error] %>
+          <%= recaptcha_tags %> <br>
+          <%= f.submit "Zapisz się!", class:"succes button" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
 
 <% if current_user.try(:admin?) %>
 <div class="row">

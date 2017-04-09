@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406172510) do
+ActiveRecord::Schema.define(version: 20170409200151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,11 +66,20 @@ ActiveRecord::Schema.define(version: 20170406172510) do
   create_table "components", force: :cascade do |t|
     t.text     "title"
     t.text     "content"
+    t.integer  "comtype"
     t.integer  "order"
-    t.integer  "position_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["position_id"], name: "index_components_on_position_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_guests", force: :cascade do |t|
+    t.integer  "event_id"
+    t.text     "author"
+    t.text     "email"
+    t.text     "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_guests_on_event_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -153,7 +162,7 @@ ActiveRecord::Schema.define(version: 20170406172510) do
 
   add_foreign_key "articles", "categories"
   add_foreign_key "comments", "articles"
-  add_foreign_key "components", "positions"
+  add_foreign_key "event_guests", "events"
   add_foreign_key "menus", "menu_types"
   add_foreign_key "tag_refs", "articles"
   add_foreign_key "tag_refs", "tags"

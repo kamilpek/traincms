@@ -48,6 +48,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rails-erd', '~> 1.5' # generowanie diagramu erd
+  gem 'railroady', '~> 1.5', '>= 1.5.2' # generowanie diagramu modelu danych
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
