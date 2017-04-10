@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :components
   resources :bookmarks
   resources :event_guests
   resources :events
@@ -64,6 +65,15 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  scope "component" do
+    resources :components do
+      member do
+        post 'setstatus'
+      end
+    end
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

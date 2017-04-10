@@ -1,0 +1,50 @@
+<% content_for :title, " - Komponenty." %>
+<% content_for :menu, "admin" %>
+
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Komponenty</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table class="stack">
+        <thead>
+          <tr>
+            <th>Nazwa</th>
+            <th>Kolejność</th>
+            <th>Status</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @components.order(:order).each do |component| %>
+            <tr>
+              <td><%= link_to component.title, component %></td>
+              <td><%= component.order %></td>
+              <% if component.active == true %> <td>Aktywny
+              <% else %> <td>Nie aktywny <% end %>
+                <%= link_to "- Ustaw", setstatus_component_path(component), method: :setstatus_component, data: { confirm: 'Jesteś pewien?' } %> </td>
+              <td><%= link_to 'Edytuj', edit_component_path(component), class:"warning button tiny" %>
+                  <%= link_to 'Usuń', component, method: :delete, data: { confirm: 'Jesteś pewny?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Nowy komponent', new_component_path, class:"success button" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row column">
+  <div class="callout">
+    <p class="lead" align="center">NAJNOWSZE TAGI</p>
+    <table>
+      <tbody align="center">
+        <% @tags.order("created_at desc").take(5).each do |tag| %>
+          <tr>
+            <td><%= link_to tag.title, tag %></td>
+            <td><%= TagRef.where(tag_id:tag.id).count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p class="lead" align="center"><%= link_to "WSZYSTKIE TAGI", tags_path %></p>
+  </div>
+</div>

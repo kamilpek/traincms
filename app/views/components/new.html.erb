@@ -1,0 +1,21 @@
+<% content_for :title, " - Nowa komponent." %>
+<% content_for :menu, "admin" %>
+
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Nowy komponent</h1>
+    </div>
+  </div>
+</div>
+
+<%= render 'form', component: @component %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Lista komponentów', components_path, class:"button" %>
+    </div>
+  </div>
+</div>

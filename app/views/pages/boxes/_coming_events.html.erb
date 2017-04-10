@@ -1,0 +1,17 @@
+<div class="row column">
+  <div class="callout">
+    <p class="lead" align="center">NAJBLIŻSZE WYDARZENIA</p>
+    <% @events.order("term").take(5).each do |event| %>
+    <div class="media-object">
+      <div class="media-object-section">
+        <% if event.image? %>
+          <%= image_tag(event.image.url, size: "100x100") %>
+        <% end %>
+      </div>
+      <div class="media-object-section">
+        <h5> <%= link_to event.title, event %> </h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

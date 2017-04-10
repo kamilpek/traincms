@@ -1,0 +1,17 @@
+<div class="row column">
+  <div class="callout">
+    <p class="lead" align="center">NAJPOPULARNIEJSZE ARTYKUŁY</p>
+    <% @articles.order("visit desc").take(5).each do |article| %>
+    <div class="media-object">
+      <div class="media-object-section">
+        <% if article.image? %>
+          <%= image_tag(article.image.url, size: "100x100") %>
+        <% end %>
+      </div>
+      <div class="media-object-section">
+        <h5> <%= link_to article.title, article %> </h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

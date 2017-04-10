@@ -1,0 +1,44 @@
+<%= simple_form_for(@component) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Tytuł</span>
+          <%= f.text_field :title, type:"text", class:"input-group-field" %>
+        </div>
+        <div class="input-group">
+          <span class="label">Treść</span>
+          <%= f.text_area :content, type:"text" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Kolejność</span>
+          <%= f.number_field :order, type:"number", class:"input-group-field" %>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <%= f.check_box :active, type:"checkbox" %>
+        <label for="checkbox12">Aktywny</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= f.submit "Zatwierdź", class:"success button" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
