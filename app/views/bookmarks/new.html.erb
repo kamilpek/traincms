@@ -1,0 +1,21 @@
+<% content_for :title, " - Nowa zakładka." %>
+<% content_for :menu, "admin" %>
+
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Nowa zakładka</h1>
+    </div>
+  </div>
+</div>
+
+<%= render 'form', bookmark: @bookmark %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Lista zakładek', bookmarks_path, class:"button" %>
+    </div>
+  </div>
+</div>

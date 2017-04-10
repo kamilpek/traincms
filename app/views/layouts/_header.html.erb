@@ -7,8 +7,11 @@
   <div class="top-bar-left">
     <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
       <li class="menu-text"><%= link_to 'TrainCMS', pages_home_path %></li>
-      <% Category.all.each do |category| %>
+      <% Category.where(active:1).order(:created_at).each do |category| %>
         <li><%= link_to category.title, category %></li>
+      <% end %>
+      <% Bookmark.where(navbar:1).each do |bookmark| %>
+        <li><%= link_to bookmark.title, bookmark %></li>
       <% end %>
       <li><%= link_to 'Komentarze', comments_path %></li>
       <li><%= link_to 'Wydarzenia', events_path %></li>

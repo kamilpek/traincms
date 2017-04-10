@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bookmarks
   resources :event_guests
   resources :events
   resource :calendar, only: [:show], controller: :calendar
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
                                     confirmations: 'confirmations' }
 
   resources :users
+  resources :articles
+  resources :categories
 
   get 'pages/home'
   get 'pages/help'
@@ -53,8 +56,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :articles
-  resources :categories
+  scope "bookmark" do
+    resources :bookmarks do
+      member do
+        post 'sethomepage'
+        post 'setnavbar'
+      end
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#home'

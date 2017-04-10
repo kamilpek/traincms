@@ -1,0 +1,50 @@
+<% content_for :title, " - Zakładki." %>
+<% content_for :menu, "admin" %>
+
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Zakładki</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <table class="stack">
+        <thead>
+          <tr>
+            <th>Tytuł</th>
+            <th>Strona Główna</th>
+            <th>Pasek Nawigacji</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookmarks.each do |bookmark| %>
+            <tr>
+              <td><%= link_to bookmark.title, bookmark %></td>
+              <% if bookmark.home == true %> <td>Tak
+              <% else %> <td>Nie <% end %>
+                <%= link_to "- Ustaw", sethomepage_bookmark_path(bookmark), method: :setnavbar_bookmark, data: { confirm: 'Jesteś pewien?' } %> </td>
+              <% if bookmark.navbar == true %> <td>Tak
+              <% else %> <td>Nie <% end %>
+                <%= link_to "- Ustaw", setnavbar_bookmark_path(bookmark), method: :setnavbar_bookmark, data: { confirm: 'Jesteś pewien?' } %> </td>
+              <td><%= link_to "Edytuj", edit_bookmark_path(bookmark), class:"warning button tiny" %>
+                  <%= link_to "Usuń", bookmark, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Nowa Zakładka', new_bookmark_path, class:"success button" %>
+    </div>
+  </div>
+</div>

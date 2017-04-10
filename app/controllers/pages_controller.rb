@@ -6,6 +6,9 @@ class PagesController < ApplicationController
     @articles = @articles.paginate(:page => params[:page], :per_page => 5)
     @tags = Tag.where("active = ?", true)
     @events = Event.where("active = ?", true)
+    if Bookmark.where(home:true).count == 1
+      @bookmark = Bookmark.where(home:true).last
+    end
   end
 
   def help

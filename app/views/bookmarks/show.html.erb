@@ -1,0 +1,40 @@
+<% content_for :title, " - #{@bookmark.title}." %>
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1><%= @bookmark.title %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= image_tag @bookmark.image.url if @bookmark.image? %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <%= @bookmark.content.html_safe %>
+    </div>
+  </div>
+</div>
+
+<% if current_user.try(:admin?) %>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <%= link_to "Usuń", @bookmark, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button" %>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="callout" align="center">
+        <%= link_to "Edytuj", edit_bookmark_path(@bookmark), class:"warning button" %>
+      </div>
+    </div>
+  </div>
+<% end %>

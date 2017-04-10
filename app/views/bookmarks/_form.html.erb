@@ -1,0 +1,54 @@
+<%= simple_form_for(@bookmark) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <div class="input-group">
+          <span class="input-group-label">Tytuł</span>
+          <%= f.text_field :title, type:"text", class:"input-group-field" %>
+        </div>
+        <div class="input-group">
+          <span class="label">Treść</span>
+          <%= f.cktext_area :content, type:"text" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          Ilustracja
+          <%= f.file_field :image %>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :remove_image, type:"checkbox" %>
+          <label for="checkbox12">Usuń obrazek</label>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+        <%= f.check_box :navbar, type:"checkbox" %>
+        <label for="checkbox12">Pasek</label>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="callout" align="center">
+          <%= f.check_box :home, type:"checkbox" %>
+          <label for="checkbox12">Główna</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout" align="center">
+        <%= f.submit "Zatwierdź", class:"success button" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

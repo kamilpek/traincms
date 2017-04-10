@@ -1,0 +1,26 @@
+<% content_for :title, " - Edycja zakładki." %>
+<% content_for :menu, "admin" %>
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="callout" align="center">
+      <h1>Edycja zakładki</h1>
+    </div>
+  </div>
+</div>
+
+<%= render 'form', bookmark: @bookmark %>
+
+<br>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Pokaż zakładkę', @bookmark, class:"button" %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout" align="center">
+      <%= link_to 'Lista zakładek', bookmarks_path, class:"button" %>
+    </div>
+  </div>
+</div>
