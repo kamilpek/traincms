@@ -73,6 +73,24 @@ class CommentsController < ApplicationController
     end
   end
 
+  def voteplus
+    @comment = Comment.find(params[:id])
+    comment = Comment.find(@comment.id)
+    votes_p = Comment.where(id:@comment.id).pluck(:vote_plus).last
+    votes_p = votes_p.to_i + 1
+    comment.update_attribute(:vote_plus, votes_p)
+    redirect_to article_path(@comment.article_id), notice: "Dziękujemy za ocenę."
+  end
+
+  def voteminus
+    @comment = Comment.find(params[:id])
+    comment = Comment.find(@comment.id)
+    votes_p = Comment.where(id:@comment.id).pluck(:vote_minus).last
+    votes_p = votes_p.to_i + 1
+    comment.update_attribute(:vote_minus, votes_p)
+    redirect_to article_path(@comment.article_id), notice: "Dziękujemy za ocenę."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment

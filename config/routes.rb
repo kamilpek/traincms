@@ -74,6 +74,14 @@ Rails.application.routes.draw do
     end
   end
 
+  scope "comments" do
+    resources :comments do
+      member do
+        post 'voteplus'
+        post 'voteminus'
+      end
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

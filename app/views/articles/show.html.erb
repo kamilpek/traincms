@@ -115,6 +115,7 @@
             <th>Autor</th>
             <th>Treść</th>
             <th>Adres IP</th>
+            <th>Ocena</th>
           </tr>
         </thead>
         <tbody>
@@ -124,6 +125,9 @@
               <td><%= comment.author %></td>
               <td><%= comment.content %></td>
               <td><%= comment.ip %></td>
+              <td><%= comment.vote_plus.to_i - comment.vote_minus.to_i %>
+                  <%= link_to '+', voteplus_comment_path(comment), method: :voteplus, class:'success button tiny' %>
+                  <%= link_to '-', voteminus_comment_path(comment), method: :voteminus, class:'alert button tiny' %></td>
             </tr>
           <% end %><% end %>
         </tbody>
