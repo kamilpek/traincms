@@ -10,11 +10,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :tag_refs
   resources :tags
-  devise_for :users, controllers: { sessions: 'devise/sessions',
-                                    registrations: 'registrations',
-                                    confirmations: 'confirmations' }
-
-  resources :users
+  devise_for :users
   resources :articles
   resources :categories
 
@@ -35,12 +31,12 @@ Rails.application.routes.draw do
   scope "admin" do
     resources :users do
       member do
+        delete 'destroy'
         get 'new'
         get 'edit'
         patch 'update'
         post 'grantadmin'
-        post 'create'
-        delete 'destroy'
+        post 'create'        
       end
     end
   end

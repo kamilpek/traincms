@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :skip_confirmation!, only: [:save]
 
   def new
     @user = User.new
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to admin_users_path, notice: 'Użytkownik dodany.' }
@@ -25,17 +25,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params_edit)
         format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
-  end
-
-  def addnotes
-    @user = User.find(params[:id])
-    respond_to do |format|
-      if @user.update(user_params_notes)
-        format.html { redirect_to tickets_path, notice: 'Dodano notatke.' }
       else
         format.html { render :edit }
       end
@@ -67,15 +56,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :department_id, :role_id, :branch_id)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
   def user_params_edit
-    params.require(:user).permit(:first_name, :last_name, :email, :department_id, :role_id, :branch_id)
-  end
-
-  def user_params_notes
-    params.require(:user).permit(:notes)
+    params.require(:user).permit(:first_name, :last_name, :email)
   end
 
 end

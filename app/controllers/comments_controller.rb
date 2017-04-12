@@ -76,19 +76,29 @@ class CommentsController < ApplicationController
   def voteplus
     @comment = Comment.find(params[:id])
     comment = Comment.find(@comment.id)
-    votes_p = Comment.where(id:@comment.id).pluck(:vote_plus).last
-    votes_p = votes_p.to_i + 1
-    comment.update_attribute(:vote_plus, votes_p)
-    redirect_to article_path(@comment.article_id), notice: "Dziękujemy za ocenę."
+    if cookies[:voted] == 0
+      votes_p = Comment.where(id:@comment.id).pluck(:vote_plus).last
+      votes_p = votes_p.to_i + 1
+      comment.update_attribute(:vote_plus, votes_p)
+      cookies[:voted] = 1
+      redirect_to article_path(@comment.article_id), notice: "Dziękujemy za ocenę."
+    else
+      redirect_to article_path(@comment.article_id), notice: "Już głosowałeś."
+    end
   end
 
   def voteminus
     @comment = Comment.find(params[:id])
     comment = Comment.find(@comment.id)
-    votes_p = Comment.where(id:@comment.id).pluck(:vote_minus).last
-    votes_p = votes_p.to_i + 1
-    comment.update_attribute(:vote_minus, votes_p)
-    redirect_to article_path(@comment.article_id), notice: "Dziękujemy za ocenę."
+    if cookies[:voted] == 0
+      votes_m = Comment.where(id:@comment.id).pluck(:vote_minus).last
+      votes_m = votes_m.to_i + 1
+      comment.update_attribute(:vote_minus, votes_m)
+      cookies[:voted] = 1
+      redirect_to article_path(@comment.article_id), notice: "Dziękujemy za ocenę."
+    else
+      redirect_to article_path(@comment.article_id), notice: "Już głosowałeś."
+    end
   end
 
   private
