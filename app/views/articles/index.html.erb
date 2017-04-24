@@ -1,4 +1,5 @@
 <% content_for :title, " - Lista Artykułów." %>
+<% content_for :rss, auto_discovery_link_tag(:atom, articles_url(format: "atom")) %>
 
 <br>
 <div class="row">

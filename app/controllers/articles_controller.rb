@@ -1,12 +1,17 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show, :print_article, :print_article_comments]
+  before_filter :authenticate_user!, except: [:index, :show, :print_article, :print_article_comments]
 
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.all
     @articles = @articles.paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.html
+      format.atom
+      format.rss
+    end
   end
 
   # GET /articles/1
