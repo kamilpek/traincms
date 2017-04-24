@@ -3,15 +3,15 @@
 <br>
 <div class="row">
   <div class="medium-12 columns">
-    <div class="callout" align="center">
-      <h2 align="center">Wyszukiwarka</h2>
+    <div class="callout">
+      <h2>Wyszukiwarka</h2>
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= form_tag pages_search_path, :method => :get do %>
         <p>
           <div class="input-group">
@@ -29,7 +29,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <table class="stack">
         <thead>
           <tr>
@@ -40,7 +40,7 @@
         </thead>
         <tbody>
           <% @articles.order("created_at desc").each do |article| %>
-            <tr align="center">
+            <tr>
               <td><%= link_to article.title, article %></td>
               <td><%= Category.where(id:article.category).pluck(:title).last %></td>
               <td><%= article.visit %></td>

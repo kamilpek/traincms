@@ -1,7 +1,7 @@
 <br>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h1>Komentarz - lista</h1>
     </div>
   </div>
@@ -9,7 +9,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <table class="stack">
         <thead>
           <tr>
@@ -32,7 +32,7 @@
               <td><%= comment.author %></td>
               <td><%= comment.email %></td>
               <td><%= comment.ip %></td>
-              <td align="center"><%= link_to 'Usuń', comment, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
+              <td><%= link_to 'Usuń', comment, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
             </tr>
           <% end %> <% end %> <% end %>
         </tbody>

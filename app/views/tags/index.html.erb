@@ -3,7 +3,7 @@
 </br>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h1>Tagi.</h1>
     </div>
   </div>
@@ -11,7 +11,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <table class="stack">
         <thead>
           <tr>
@@ -19,7 +19,7 @@
             <th>Ilość artykułów</th>
           </tr>
         </thead>
-        <tbody align="center">
+        <tbody>
           <% @tags.order("created_at desc").each do |tag| %>
             <tr>
               <td><%= link_to tag.title, tag %></td>

@@ -2,7 +2,7 @@
 <br>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h1><%= @article.title %></h1>
     </div>
   </div>
@@ -10,22 +10,22 @@
 
 <div class="row">
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-folder"> Kategoria: <%= Category.where(id:@article.category).pluck(:title).last%></i></h5>
     </div>
   </div>
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-torsos"> Wyświetlenia: <%= @article.visit %></i></h5>
     </div>
   </div>
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-calendar"> <%= @article.created_at.strftime("%d.%m.%Y") %></i></h5>
     </div>
   </div>
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-torso"> Autor: <%= User.where(id:@article.user_id).pluck(:email).last %></i></h5>
     </div>
   </div>
@@ -33,17 +33,17 @@
 
 <div class="row">
   <div class="large-4 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to 'Pobierz Artykuł w PDF', article_path(@article, format: "pdf"), class:'button'%>
     </div>
   </div>
   <div class="large-4 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to 'Wydrukuj Artykuł', print_article_article_path(@article), :method => :get, class:'button'%>
     </div>
   </div>
   <div class="large-4 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to 'Wydrukuj Komentarze', print_article_comments_article_path(@article), :method => :get, class:'button'%>
     </div>
   </div>
@@ -51,7 +51,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= image_tag @article.image.url if @article.image? %>
     </div>
   </div>
@@ -59,7 +59,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= @article.intro.html_safe %>
     </div>
   </div>
@@ -67,7 +67,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= @article.content.html_safe %>
     </div>
   </div>
@@ -75,7 +75,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="comments"> Tagi </h3>
       <h5>
         <% @tag_refs.each do |tag_refs| %>
@@ -91,12 +91,12 @@
   <% if current_user.id == @article.user_id || current_user.try(:admin?) %>
     <div class="row">
       <div class="large-6 columns">
-        <div class="callout" align="center">
+        <div class="callout">
           <%= link_to 'Edycja', edit_article_path(@article), class:"warning button" %>
         </div>
       </div>
       <div class="large-6 columns">
-        <div class="callout" align="center">
+        <div class="callout">
           <%= link_to 'Powrót', articles_path, class:"button" %>
         </div>
       </div>
@@ -107,7 +107,7 @@
 <% if @article.comments_on == true %>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="comments"> Komentarze </h3>
       <table class="stack">
         <thead>
@@ -138,7 +138,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="add_comment"> Dodaj Komentarz </h3>
         <%= form_for Comment.new do |f| %>
           <%= f.hidden_field :article_id, :value => @article.id  %>

@@ -35,3 +35,7 @@ h1,h2,h3,h4 {
 .lead {
     color: #1779ba;
 }
+
+div.callout {
+    text-align: center; 
+}

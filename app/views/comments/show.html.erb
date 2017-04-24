@@ -1,7 +1,7 @@
 <br>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h1>Komentarz numer: <%= @comment.id %></h1>
     </div>
   </div>
@@ -9,22 +9,22 @@
 
 <div class="row">
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-page"> Artykuł: <%= link_to Article.where(id:@comment.article).pluck(:title).last, @comment.article %></i></h5>
     </div>
   </div>
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-torso"> Autor: <%= @comment.author %></i></h5>
     </div>
   </div>
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-mail"> Email: <%= @comment.email %></i></h5>
     </div>
   </div>
   <div class="large-3 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-marker"> Adres IP: <%= @comment.ip %></i></h5>
     </div>
   </div>
@@ -32,7 +32,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><%= @comment.content %></h5>
     </div>
   </div>
@@ -42,12 +42,12 @@
   <% if current_user.id == Article.where(id:@comment.article).pluck(:user_id).last || current_user.try(:admin?) %>
     <div class="row">
       <div class="large-6 columns">
-        <div class="callout" align="center">
+        <div class="callout">
           <%= link_to 'Edycja', edit_comment_path(@comment), class:"warning button" %>
         </div>
       </div>
       <div class="large-6 columns">
-        <div class="callout" align="center">
+        <div class="callout">
           <%= link_to 'Powrót', comments_path, class:"button" %>
         </div>
       </div>

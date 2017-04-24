@@ -2,7 +2,7 @@
 <br>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h1><%= @event.title %></h1>
     </div>
   </div>
@@ -10,12 +10,12 @@
 
 <div class="row">
   <div class="large-6 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h5><i class="fi-torsos"> Wyświetlenia: <%= @event.visit %></i></h5>
     </div>
   </div>
   <div class="large-6 columns">
-    <div class="callout" align="center">
+    <div class="callout">
     <h5><i class="fi-torsos"> Uczestnicy: <%= @event_guests.where(event_id:@event.id).count %></i></h5>
     </div>
   </div>
@@ -23,7 +23,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= image_tag @event.image.url if @event.image? %>
     </div>
   </div>
@@ -31,7 +31,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= @event.content.html_safe %>
     </div>
   </div>
@@ -39,7 +39,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="comments"> Zapisani goście </h3>
       <% @event_guests.each do |event_guest| %>
         <% if @event.id == Event.where(id:event_guest.article).pluck(:id).last %>
@@ -52,7 +52,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="add_comment"> Zapisz się na to wydarzenie </h3>
         <%= form_for EventGuest.new do |f| %>
           <%= f.hidden_field :event_id, :value => @event.id  %>
@@ -77,12 +77,12 @@
 <% if current_user.try(:admin?) %>
 <div class="row">
   <div class="large-6 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to 'Edycja Wydarzenia', edit_event_path(@event), class:'warning button' %>
     </div>
   </div>
   <div class="large-6 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to 'Lista Wydarzeń', events_path, class:'button' %>
     </div>
   </div>
@@ -90,7 +90,7 @@
 <% else %>
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= link_to 'Lista Wydarzeń', events_path, class:'button' %>
       </div>
     </div>

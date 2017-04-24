@@ -1,19 +1,19 @@
 <br>
 <div class="row">
   <div class="medium-4 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to calendar_path(date: @date - 1.month), class: "button" do %>
         <i class="fi-calendar"> Poprzedni Miesiąc</i>
       <% end %>
     </div>
   </div>
   <div class="medium-4 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="month"><%= l(@date, format: :calendar) %></h3>
     </div>
   </div>
   <div class="medium-4 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to calendar_path(date: @date + 1.month), class: "button" do %>
         <i class="fi-calendar"> Następny Miesiąc</i>
       <% end %>

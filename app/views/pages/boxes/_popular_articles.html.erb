@@ -1,6 +1,6 @@
 <div class="row column">
   <div class="callout">
-    <p class="lead" align="center">NAJPOPULARNIEJSZE ARTYKUŁY</p>
+    <p class="lead">NAJPOPULARNIEJSZE ARTYKUŁY</p>
     <% @articles.order("visit desc").take(5).each do |article| %>
     <div class="media-object">
       <div class="media-object-section">

@@ -12,7 +12,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Tytuł</span>
           <%= f.text_field :title, type:"text", class:"input-group-field" %>
@@ -23,7 +23,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Autor</span>
           <%= f.text_field :post, :value => current_user.email, :readonly => true, class:"input-group-field" %><br>
@@ -35,24 +35,24 @@
 
   <div class="row">
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
           <%= f.check_box :active, type:"checkbox" %>
           <label for="checkbox12">Opublikowany</label>
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
           <%= f.check_box :highlight, type:"checkbox" %>
           <label for="checkbox12">Wyróżniony</label>
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= f.file_field :image %>
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= f.check_box :remove_image, type:"checkbox" %>
         <label for="checkbox12">Usuń obrazek</label>
       </div>
@@ -61,7 +61,7 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <div class="callout" align="center">
+        <div class="callout">
           <span class="label">Opis wydarzenia</span>
           <%= f.cktext_area :content, placeholder:"Artykuł" %><br>
         </div>
@@ -70,7 +70,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Data wydarzenia</span>
           <%= f.text_field :term, type:"date", :value => Time.now.strftime('%Y-%m-%d'), class:"input-group-field" %>
@@ -81,7 +81,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= f.submit :Dodaj, class:'success button' %>
       </div>
     </div>

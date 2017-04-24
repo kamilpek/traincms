@@ -13,7 +13,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Tytuł</span>
           <%= f.text_field :title, type:"text", class:"input-group-field" %>
@@ -24,7 +24,7 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Kategoria</span>
           <%= f.collection_select :category_id, Category.all, :id, :title, {prompt: "Wybierz"}, {class:"input-group-field"} %>
@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="large-6 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Autor</span>
           <%= f.text_field :post, :value => current_user.email, :readonly => true, class:"input-group-field" %><br>
@@ -44,30 +44,30 @@
 
   <div class="row">
     <div class="large-2 columns">
-      <div class="callout" align="center">
+      <div class="callout">
           <%= f.check_box :active, type:"checkbox" %>
           <label for="checkbox12">Aktywny</label>
       </div>
     </div>
     <div class="large-2 columns">
-      <div class="callout" align="center">
+      <div class="callout">
           <%= f.check_box :highlight, type:"checkbox" %>
           <label for="checkbox12">Wyróżniony</label>
       </div>
     </div>
     <div class="large-2 columns">
-      <div class="callout" align="center">
+      <div class="callout">
           <%= f.check_box :comments_on, :checked => "checked", type:"checkbox" %>
           <label for="checkbox12">Komentarze</label>
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= f.file_field :image %>
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= f.check_box :remove_image, type:"checkbox" %>
         <label for="checkbox12">Usuń obrazek</label>
       </div>
@@ -76,7 +76,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <span class="label">Wstęp do artykułu</span>
         <%= f.cktext_area :intro, placeholder:"Wstęp" %><br>
       </div>
@@ -85,7 +85,7 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <span class="label">Część właściwa artykułu</span>
         <%= f.cktext_area :content, placeholder:"Artykuł" %><br>
       </div>
@@ -94,7 +94,7 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <div class="input-group">
           <span class="input-group-label">Wyświetlenia</span>
           <%= f.number_field :visit, :value => 0, :readonly => true, class:"input-group-field"  %>
@@ -102,12 +102,12 @@
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= f.submit :Dodaj, class:"button success" %>
       </div>
     </div>
     <div class="large-3 columns">
-      <div class="callout" align="center">
+      <div class="callout">
         <%= link_to 'Wróć', articles_path, class:"button alert" %>
       </div>
     </div>

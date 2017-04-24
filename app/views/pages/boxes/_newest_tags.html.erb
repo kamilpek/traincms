@@ -1,8 +1,8 @@
 <div class="row column">
   <div class="callout">
-    <p class="lead" align="center">NAJNOWSZE TAGI</p>
+    <p class="lead">NAJNOWSZE TAGI</p>
     <table>
-      <tbody align="center">
+      <tbody>
         <% @tags.order("created_at desc").take(5).each do |tag| %>
           <tr>
             <td><%= link_to tag.title, tag %></td>
@@ -11,6 +11,6 @@
         <% end %>
       </tbody>
     </table>
-    <p class="lead" align="center"><%= link_to "WSZYSTKIE TAGI", tags_path %></p>
+    <p class="lead"><%= link_to "WSZYSTKIE TAGI", tags_path %></p>
   </div>
 </div>

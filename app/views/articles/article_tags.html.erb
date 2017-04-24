@@ -1,7 +1,7 @@
 <br>
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h1><%= @article.title %></h1>
     </div>
   </div>
@@ -9,7 +9,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3 id="comments"> Tagi </h3>
       <h5>
         <% @tag_refs.each do |tag_refs| %>
@@ -23,7 +23,7 @@
 
 <div class="row">
   <div class="large-6 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3> Dodaj Nowy Tag </h3>
       <%= form_for Tag.new do |f| %>
         <%= f.hidden_field :active, :value => true %>
@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="large-6 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <h3> Dodaj Tagi do Artykułu </h3>
       <%= form_for TagRef.new do |f| %>
         <%= f.hidden_field :article_id, :value => @article.id  %>
@@ -52,7 +52,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout" align="center">
+    <div class="callout">
       <%= link_to 'Powórt do listy Artykułów', articles_path, class:"button" %>
     </div>
   </div>
