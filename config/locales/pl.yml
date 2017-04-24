@@ -1,5 +1,9 @@
 ---
 pl:
+  recaptcha:
+    errors:
+      verification_failed: 'Mamy problem'
+
   activerecord:
     errors:
       messages:
