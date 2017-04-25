@@ -62,7 +62,7 @@
             <p><%= image_tag article.image.url(:thumb) if article.image? %></p>
           </div>
           <div class="large-6 columns">
-            <p><%= raw article.intro.html_safe.to_s %></p>
+            <p><%= sanitize(article.intro, :tags => {}) %></p>
           </div>
         </div>
         <div class="row">
