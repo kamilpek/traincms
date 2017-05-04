@@ -22,8 +22,8 @@ class ArticleOnePdf < Prawn::Document
 
   def article_image
     move_down 10
-    photo = "#{Rails.root}/public#{@article.image.url}"
-    image photo, :width => 400
+    photo = @article.image.url if @article.image?
+    image open(photo), :width => 400
   end
 
   def article_intro
