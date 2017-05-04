@@ -18,10 +18,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @hyperlink = request.domain + "/articles/" + @article.id.to_s
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = ArticleOnePdf.new(@article)
+        pdf = ArticleOnePdf.new(@article, @hyperlink)
         send_data pdf.render, filename: "article_#{@article.id}.pdf",
                               type: "application/pdf",
                               disposition: "inline"
@@ -34,6 +35,9 @@ class ArticlesController < ApplicationController
 
   def print_article
     @article = Article.find(params[:id])
+    hyperlink = request.domain + "/articles/" + @article.id.to_s
+    qrcode = RQRCode::QRCode.new( hyperlink.to_s, :size => 4, :level => :h)
+    @qrimage = qrcode.as_png
   end
 
   def print_article_comments

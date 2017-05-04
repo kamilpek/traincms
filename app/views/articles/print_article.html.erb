@@ -47,9 +47,23 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="callout">
+        <p>Zeskanuj, aby przejść do artykułu na stronie:</p>
+        <img src="<%= @qrimage.to_data_url %>" />
+      </div>
+    </div>
+  </div>
+
+  <style type="text/css" media="print">
+    .dontprint
+    { display: none; }
+  </style>
+
   <footer>
       <div class="row">
-        <div class="medium-12 columns">
+        <div class="callout medium-12 columns dontprint">
           <%= link_to 'Strona Główna', pages_home_path, class:"button" %></li>
         </div>
       </div>

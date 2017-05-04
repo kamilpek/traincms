@@ -1,13 +1,15 @@
 class ArticleOnePdf < Prawn::Document
   include ActionView::Helpers::SanitizeHelper
 
-  def initialize(article)
+  def initialize(article, hyperlink)
     super()
     @article = article
+    @hyperlink = hyperlink
     article_header
     article_image
     article_intro
     article_content
+    article_qr
   end
 
   def article_header
@@ -38,6 +40,16 @@ class ArticleOnePdf < Prawn::Document
     font("app/assets/fonts/SourceSansPro-Regular.ttf", size: 14) do
       text "#{remove_html(@article.content)}"
     end
+  end
+
+  def article_qr
+    move_down 10
+    font("app/assets/fonts/SourceSansPro-Regular.ttf", size: 14) do
+      text "Zeskanuj, aby przejść do artykułu na stronie:"
+    end
+    move_down 5
+    qrcode = RQRCode::QRCode.new( @hyperlink.to_s, :size => 4, :level => :h)
+    render_qr_code(qrcode, :dot=>2)
   end
 
   def remove_html(string)
