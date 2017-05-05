@@ -38,6 +38,24 @@
 </div>
 
 <div class="row">
+  <div class="large-3 columns">
+    <div class="callout">
+      <i class="fi-map"> Lokalizacja: <%= @event.adress %></i>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="callout">
+      <i class="fi-compass"> Koordynaty: <%= @event.latitude %>, <%= @event.longitude %></i>
+    </div>
+  </div>
+  <div class="large-3 columns">
+    <div class="callout">
+      <i class="fi-map"> <a href="https://maps.google.com/maps?ll=<%= @event.latitude %>,<%= @event.longitude %>&q=<%= @event.latitude %>,<%= @event.longitude %>">Pokaż na mapie</a> </i>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="large-12 columns">
     <div class="callout">
       <h3 id="comments"> Zapisani goście </h3>

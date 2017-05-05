@@ -115,6 +115,7 @@
             <th>Autor</th>
             <th>Treść</th>
             <th>Adres IP</th>
+            <th>Lokalizacja</th>
             <th>Ocena</th>
           </tr>
         </thead>
@@ -125,6 +126,7 @@
               <td><%= comment.author %></td>
               <td><%= comment.content %></td>
               <td><%= comment.ip %></td>
+              <td><a href="https://maps.google.com/maps?ll=<%= comment.latitude %>,<%= comment.longitude %>&q=<%= comment.latitude %>,<%= comment.longitude %>"><%= comment.longitude %>,<%= comment.latitude %></a></td>
               <td><%= comment.vote_plus.to_i - comment.vote_minus.to_i %>
                   <%= link_to '+', voteplus_comment_path(comment), method: :voteplus, class:'success button tiny' %>
                   <%= link_to '-', voteminus_comment_path(comment), method: :voteminus, class:'alert button tiny' %></td>
