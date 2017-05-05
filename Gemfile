@@ -75,3 +75,4 @@ gem 'cloudinary', '~> 1.6' # upload - serwis zewnętrzny
 gem 'rqrcode', '~> 0.10.1' # kody qr - html
 gem 'prawn-qrcode', '~> 0.3.0' # kody qr - pdf
 gem 'geocoder', '~> 1.4', '>= 1.4.3' # geolokalizacja
+gem 'cookies_eu', '~> 1.6', '>= 1.6.2' # informacja o ciasteczkach

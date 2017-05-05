@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require_tree .
 //= require ckeditor/init
+//= require cookies_eu
 
 $(document).on('turbolinks:load', function() {
   $(function(){ $(document).foundation(); });
