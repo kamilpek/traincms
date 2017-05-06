@@ -38,9 +38,7 @@
         <%= date.day %>
         <% @events.order("created_at desc").each do |event| %>
           <% if date.strftime("%Y-%m-%d") == event.term.strftime("%Y-%m-%d") %>
-            <ul>
-              <li><%= link_to event.title, event %></li>
-            </ul>
+            <%= link_to truncate(event.title, :length => 10), event, { :title => event.title } %>,
           <% end %>
         <% end %>
       <% end %>
@@ -65,7 +63,7 @@
             <tr>
               <td><%= link_to event.title, event %></td>
               <td><%= event.visit %></td>
-              <td><%= event.followers %></td>
+              <td><%= EventGuest.where(event_id:event.id).count %></td>
             </tr>
           <% end %>
         </tbody>

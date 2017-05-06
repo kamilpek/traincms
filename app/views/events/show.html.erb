@@ -60,7 +60,7 @@
     <div class="callout">
       <h3 id="comments"> Zapisani goście </h3>
       <% @event_guests.each do |event_guest| %>
-        <% if @event.id == Event.where(id:event_guest.article).pluck(:id).last %>
+        <% if @event.id == EventGuest.where(id:event_guest.id).pluck(:event_id).last %>
           <%= event_guest.author %>,
         <% end %>
       <% end %>
