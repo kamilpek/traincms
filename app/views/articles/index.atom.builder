@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "TrainCMS - Artykuły"
+  feed.title "TrainCMS – Artykuły"
   feed.updated @articles.maximum(:updated_at)
   @articles.order("created_at desc").each do |article|
     feed.entry article do |entry|

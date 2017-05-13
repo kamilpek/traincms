@@ -1,4 +1,4 @@
-<% content_for :title, " - #{@article.title}." %>
+<% content_for :title, " – #{@article.title}." %>
 <br>
 <div class="row">
   <div class="large-12 columns">
@@ -127,7 +127,7 @@
               <td><%= comment.content %></td>
               <td><%= comment.ip %></td>
               <td><a href="https://maps.google.com/maps?ll=<%= comment.latitude %>,<%= comment.longitude %>&q=<%= comment.latitude %>,<%= comment.longitude %>"><%= comment.longitude %>,<%= comment.latitude %></a></td>
-              <td><%= comment.vote_plus.to_i - comment.vote_minus.to_i %>
+              <td><%= comment.vote_plus.to_i – comment.vote_minus.to_i %>
                   <%= link_to '+', voteplus_comment_path(comment), method: :voteplus, class:'success button tiny' %>
                   <%= link_to '-', voteminus_comment_path(comment), method: :voteminus, class:'alert button tiny' %></td>
             </tr>

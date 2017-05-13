@@ -1,11 +1,11 @@
-<% content_for :title, " - Panel Administracyjny." %>
+<% content_for :title, " – Panel Administracyjny." %>
 <% content_for :menu, "admin" %>
 <% if current_user.try(:admin?)%>
 </br>
 <div class="row">
   <div class="large-12 columns">
     <div class="callout">
-      <h1>Zaplecze - panel główny</h1>
+      <h1>Zaplecze – panel główny</h1>
     </div>
   </div>
 </div>
@@ -44,7 +44,7 @@
   <div class="large-2 columns">
     <div class="callout">
       <h5>Zarządzaj Kalendarzem</h5>
-      <%= link_to '<font size="24"><i class="fi-calendar"></i></font>'.html_safe, calendar_path %>
+      <%= link_to '<font size="24"><i class="fi-calendar"></i></font>'.html_safe, events_path %>
     </div>
   </div>
 </div>
