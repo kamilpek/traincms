@@ -25,7 +25,6 @@
         </thead>
         <tbody>
           <% @articles.order("created_at desc").each do |article| %>
-          <% if current_user.id == article.user_id || current_user.admin? %>
             <tr>
               <td><%= link_to article.title, article %></td>
               <td><%= Category.where(id:article.category).pluck(:title).last %></td>
@@ -44,7 +43,7 @@
               <td><%= link_to 'Edycja', edit_article_path(article), class:"button tiny" %></td>
               <td><%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Jesteś pewien?' }, class:"alert button tiny" %></td>
             </tr>
-          <% end %> <% end %>
+          <% end %>
         </tbody>
       </table>
       <p><%= will_paginate @articles, renderer: FoundationPagination::Rails %></p>

@@ -10,6 +10,8 @@
       </div>
       <div class="media-object-section">
         <h5> <%= link_to article.title, article %> </h5>
+        <h6> <i class="fi-torso" > <%= User.where(id:article.user_id).pluck(:first_name).last %>
+             <%= User.where(id:article.user_id).pluck(:last_name).last %> </i> </h6>
       </div>
     </div>
     <% end %>

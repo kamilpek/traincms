@@ -26,7 +26,7 @@
   </div>
   <div class="large-3 columns">
     <div class="callout">
-      <h5><i class="fi-torso"> Autor: <%= User.where(id:@article.user_id).pluck(:email).last %></i></h5>
+      <h5><i class="fi-torso"> <%= link_to User.where(id:@article.user_id).pluck(:first_name).last.to_s + " " + User.where(id:@article.user_id).pluck(:last_name).last.to_s, articles_path(user:@article.user_id) %></i></h5>
     </div>
   </div>
 </div>

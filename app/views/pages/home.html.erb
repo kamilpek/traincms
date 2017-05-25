@@ -18,13 +18,12 @@
               <% @articles.where(:highlight => true).take(3).each do |article| %>
               <li class="is-active orbit-slide">
                 <% if article.image? %>
-                  <%= image_tag(article.image.url, size: "1000x1000") %>
-                  <div class="orbit-caption"><%= link_to article.title, article %></div>
+                  <%= image_tag(article.image.url, height: '1000' ) %>
+                  <div class="orbit-caption"><%= link_to article.title, article, {:style=>'color:#FFFFFF; font-size: 200%;'} %></div>
                 <% end %>
               </li>
               <% end %>
             </ul>
-          <br>
           </div>
         </div>
       </div>
@@ -50,7 +49,8 @@
       <div class="callout">
         <div class="row">
           <div class="large-6 columns">
-            <h6><i class="fi-torso" > Autor: <%= User.where(id:article.user_id).pluck(:email).last %> </i></h6>
+            <h6><i class="fi-torso" > Autor: <%= User.where(id:article.user_id).pluck(:first_name).last %>
+                <%= User.where(id:article.user_id).pluck(:last_name).last %> </i></h6>
             <h6><i class="fi-calendar"> Data: <%= article.created_at.strftime("%d.%m.%Y") %> </i> </h6>
           </div>
           <div class="large-6 columns">
