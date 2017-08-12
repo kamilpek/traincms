@@ -113,30 +113,6 @@ ActiveRecord::Schema.define(version: 20170505173705) do
     t.string   "adress"
   end
 
-  create_table "menu_types", force: :cascade do |t|
-    t.text     "title"
-    t.text     "content"
-    t.integer  "order"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menus", force: :cascade do |t|
-    t.text     "title"
-    t.integer  "menu_type_id"
-    t.integer  "order"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["menu_type_id"], name: "index_menus_on_menu_type_id", using: :btree
-  end
-
-  create_table "positions", force: :cascade do |t|
-    t.text     "title"
-    t.integer  "width"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tag_refs", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "article_id"
@@ -180,7 +156,6 @@ ActiveRecord::Schema.define(version: 20170505173705) do
   add_foreign_key "articles", "categories"
   add_foreign_key "comments", "articles"
   add_foreign_key "event_guests", "events"
-  add_foreign_key "menus", "menu_types"
   add_foreign_key "tag_refs", "articles"
   add_foreign_key "tag_refs", "tags"
 end
